@@ -1,0 +1,29 @@
+<h1>AGREGAR EMPRESA</h1>
+<h3>Información de la empresa</h3>
+<form [formGroup]="firstFormGroup" (ngSubmit)="save($event)">
+    <div class="container">
+        <h5>RUC</h5>
+         <input type="text" formControlName="ruc" >
+    </div>
+    <div class="container">
+        <h5>Nombre</h5>
+        <input type="text" formControlName="nameCompany" >
+    </div>
+    <div class="container">
+        <h5>Dirección</h5>
+        <input type="text" formControlName="direccion" >
+    </div>
+    <div class="container">
+        <h5>Teléfono</h5>
+        <input type="text" formControlName="telefono" >
+    </div>
+    <div class="container">
+        <h5>Correo</h5>
+        <input type="text" formControlName="correo" >
+    </div>
+        
+    <div class="row">
+        <button class="btn-cancelar" [mat-dialog-close]="true">Cancerlar</button>
+        <button class="btn-guardar-edit" [mat-dialog-close]="true" [disabled]="!firstFormGroup.valid" type="submit">Guardar</button>
+    </div>
+</form>

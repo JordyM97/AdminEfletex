@@ -1,0 +1,217 @@
+<div class="img-bg">
+  
+      <div class="menu">
+        <img id="logo" src="assets/iconos/LOGO3.png" alt="logo" >
+      <a class="nav-link" routerLink="/inicioProv">QUIÉNES SOMOS </a>
+      <a class="nav-link" routerLink="/inicioProv">NUESTROS CLIENTES </a>
+      <a class="nav-link" routerLink="/registroProv">TRABAJA CON NOSOTROS </a>
+      <a class="nav-link" routerLink="/inicioProv">CONTÁCTANOS </a>
+    </div>
+
+  
+  <h1 id="title">¡Únete a nuestro equipo!</h1>
+
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup" >
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Información del proveedor</ng-template>
+        <div class="izquierda">
+          <div class="container">
+            <h5>Correo electrónico</h5>
+            <mat-form-field appearance="fill">
+             <input matInput type="text" formControlName="emailDriver" required>
+            </mat-form-field>
+          </div>
+          <div class="container">
+            <h5>Cédula</h5>
+            <mat-form-field appearance="fill">
+            <input matInput type="text" formControlName="ciDriver" required> 
+            </mat-form-field>
+          </div>
+         <div class="container">
+          <h5>Nombre</h5>
+            <mat-form-field appearance="fill">
+              <input matInput type="text" formControlName="nameDriver" required> 
+            </mat-form-field>
+          </div>
+          <div class="container">
+            <h5>Apellidos</h5>
+            <mat-form-field appearance="fill">
+              <input matInput type="text" formControlName="lnameDriver" required> 
+            </mat-form-field>
+          </div>
+          <div class="container">
+            <h5>Fecha de nacimiento</h5>
+            <mat-form-field appearance="fill">
+              <input matInput [matDatepicker]="picker" formControlName="birthdateDriver" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        
+        <div class="derecha">
+          <div class="container">
+            <h5>Sexo</h5>
+            <mat-form-field appearance="fill">
+              <mat-select  formControlName="sexDriver" required>
+                <mat-option value="hombre">Hombre</mat-option>
+                <mat-option value="mujer">Mujer</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="container">
+            <h5>Dirección</h5>
+            <mat-form-field appearance="fill">
+              <input matInput type="text" formControlName="addressDriver" required> 
+            </mat-form-field>        
+          </div>
+          <div class="container">
+            <h5>Teléfono</h5>
+            <mat-form-field appearance="fill">
+              <input matInput type="text" formControlName="phoneDriver" required> 
+            </mat-form-field>        
+          </div>
+          <div class="container">
+            <h5>Cédula (foto)</h5>          
+            <input class="getFile" type="file" accept=".png, .jpg, .jpeg" (change)="uploadCedula($event)" required>
+          </div>
+          <div class="container">
+            <h5>Licencia (foto)</h5>
+            <input class="getFile"  type="file" accept=".png, .jpg, .jpeg" (change)="uploadLicencia($event)" required>
+          </div>
+        </div>
+        
+      </form>
+
+      
+      <div>
+        <button mat-button matStepperNext class="btnSgte">
+          <img id="button" src="assets/iconos/siguiente.png" alt="Siguiente" height="40">
+        </button>
+      </div>
+    </mat-step>
+  
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Información del vehículo</ng-template>
+        <div class="izquierda">
+          <div class="container">
+            <h5>Placa</h5>
+            <mat-form-field appearance="fill">
+              <input matInput type="text" formControlName="plateVehicle" required> 
+            </mat-form-field>
+          </div>
+          <div class="container">
+            <h5>Marca</h5>
+           <!-- <mat-form-field appearance="fill">
+              <input matInput type="text" formControlName="brandVehicle" required> 
+            </mat-form-field>-->
+            <mat-form-field appearance="fill">
+              <mat-select formControlName="brandVehicle">
+                <mat-option *ngFor="let item of carsList" value={{item.marca}}>{{item.marca}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="container">
+            <h5>Modelo</h5>
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="modelVehicle" >
+              
+              <mat-optgroup  *ngFor="let item of carsList" [label]="item.marca"
+              [disabled]="item.disabled">
+              <mat-option *ngFor="let model of item.modelo" value={{model.value}}>{{model.value}}</mat-option>
+            </mat-optgroup>
+            
+            </mat-select>
+          </mat-form-field>
+          </div>
+          <div class="container">
+            <h5>Año</h5>
+            <mat-form-field appearance="fill">
+              <input matInput type="text" formControlName="yearVehicle" required> 
+            </mat-form-field>
+          </div>
+          <div class="container">
+            <h5>Color</h5>
+            <mat-form-field appearance="fill">
+              <input matInput type="text" formControlName="colorVehicle" required> 
+            </mat-form-field>
+          </div>
+        </div>
+  
+        
+        <div class="derecha">
+          <div class="container">
+            <h5>Placa (foto)</h5>
+            <input class="getFile" type="file" accept=".png, .jpg, .jpeg" (change)="uploadPlaca($event)" required>
+          </div>
+          <div class="container">
+            <h5>Matrícula (foto)</h5>
+            <input class="getFile" type="file" accept=".png, .jpg, .jpeg" (change)="uploadMatricula($event)" required>
+          </div>
+          <div class="container">
+            <h5>Vehículo (foto)</h5>
+            <input  class="getFile"  type="file" accept=".png, .jpg, .jpeg" (change)="uploadVehiculo($event)" required>   
+           </div>
+          <div class="container">
+            <h5>Servicio</h5>
+            <mat-form-field appearance="fill">
+              <mat-select >
+                <mat-option value="mudanza">Mudanza</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="container">
+            <h5>Tipo de vehículo</h5>
+            <mat-form-field appearance="fill">
+              <mat-select  formControlName="typeVehicle" required>
+                <mat-option value="camion">Camión</mat-option>
+                <mat-option value="camioneta">Camioneta</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      
+        <div>
+          <mat-checkbox required class="termycond"> Acepta los 
+            <button class="politicas" (click)="openDialogPoliticas()"> términos y condiciones</button> 
+            del servicio</mat-checkbox>
+          <button class="btnReg" mat-button [disabled]="!secondFormGroup.valid" [mat-dialog-close]="true"
+            (click)="guardarProveedor()">REGISTRARSE</button>
+      </div>
+      </form>
+      <div>
+        <button mat-button matStepperPrevious class="btnAtras">
+          <img id="button" src="assets/iconos/atras.png" alt="Atrás" height="40">
+        </button>
+     
+     
+    </div>
+    </mat-step>
+    
+  
+  </mat-horizontal-stepper>
+
+</div>
+
+
+
+<!-- <div>
+<div>
+          <button mat-button matStepperNext class="btnSgte">
+            <img id="button" src="assets/iconos/siguiente.png" alt="Siguiente" height="40">
+          </button>
+  
+        </div> 
+
+  <div>
+          <mat-checkbox required class="termycond"> Acepta los términos y condiciones del servicio</mat-checkbox>
+          <button class="btnReg" mat-button [disabled]="!secondFormGroup.valid" [mat-dialog-close]="true"
+            (click)="guardarProveedor()">REGISTRARSE</button>
+        </div>
+
+          
+
+  
+        </div> -->

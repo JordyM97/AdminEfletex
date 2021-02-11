@@ -1,0 +1,74 @@
+<app-menu></app-menu>
+<div  class="page-content">
+  <h1>EMPRESA</h1>
+
+  <mat-tab-group dynamicHeight class="empresa">
+    <mat-tab label="POLÍTICAS"> 
+      <button class="btn-editar" (click)="editarPolitica()">Editar</button>
+      <div class="politicas">
+        <textarea matInput [(ngModel)]="politica.descriptionPolice" ></textarea>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="SERVICIOS">
+      
+      <div class="input-group md-form form-sm form-2 pl-0">
+        <a (click)="openFormServicio()"><img src="assets/iconos/agregar.png" alt="agregar"  width="35" height="35"></a>
+        <input class="form-control my-0 py-1 red-border search" type="text"  name="filtroServicio" placeholder="Buscar" [(ngModel)]="filtroServicio">
+        <img class="input-img" src="./assets/iconos/buscar.png">
+      </div>
+      
+      <mat-card>
+        <mat-card-content>
+          <div class="container">
+            <table class="table">
+              <thead>
+                <th>Nombre</th>
+                <th>Descripción</th>
+              </thead>
+              <tr *ngFor="let servicio of servicios | filtroservicio:filtroServicio">
+                <td>{{servicio.nameTypeService}}</td>
+                <td>{{servicio.descriptionTypeService}}</td>
+                <td><button class="editar"(click)="editarFormServicio(servicio)">Editar</button></td>
+                <td><button (click)="eliminarServicio(servicio.idTypeService)">Eliminar</button></td>           
+              </tr>
+            </table>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+        
+    <mat-tab label="TARTIFAS">
+      
+      <div class="input-group md-form form-sm form-2 pl-0">
+        <a (click)="openFormTarifa()"><img src="assets/iconos/agregar.png" alt="agregar"  width="35" height="35"></a>
+        <input class="form-control my-0 py-1 red-border search" type="text"  name="filtroTarifa" placeholder="Buscar" [(ngModel)]="filtroTarifa">
+        <img class="input-img" src="./assets/iconos/buscar.png">
+      </div>
+      <mat-card>
+        <mat-card-content>
+          <div class="container">
+            <table class="table">
+              <thead>
+                <th>Tarifa</th>
+                <th>Servicio</th>
+                <th>Min KM</th>
+                <th>Max KM</th>
+                <th>Precio/KM</th>
+              </thead>
+              <tr *ngFor="let tarifa of tarifas | filtrotarifa:filtroTarifa">
+                <td>{{tarifa.nameFare}}</td>
+                <td>{{tarifa.nameService}}</td>
+                <td>{{tarifa.minFare}}</td>
+                <td>{{tarifa.maxFare}}</td>
+                <td>{{tarifa.priceFare}}</td>
+                <td><button class="editar" (click)="editarFormTarifa(tarifa)">Editar</button></td>
+                <td><button (click)="eliminarTarifa(tarifa.idFare)">Eliminar</button></td>           
+              </tr>
+            </table>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+</div>

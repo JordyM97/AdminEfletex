@@ -1,0 +1,53 @@
+<app-menu></app-menu>
+<div  class="page-content">
+  <h1>SUPERADMINISTRADOR</h1>
+
+  <mat-tab-group dynamicHeight class="empresa">
+    <mat-tab label="EMPRESAS">
+        <div class="input-group md-form form-sm form-2 pl-0">
+            <a (click)="openFormEmpresa()"><img src="assets/iconos/agregar.png" alt="agregar"  width="35" height="35"></a>
+            <input class="form-control my-0 py-1 red-border search" type="text"  name="filtroServicio" placeholder="Buscar">
+            <img class="input-img" src="./assets/iconos/buscar.png">
+        </div>
+        <mat-card>
+          <mat-card-content>
+            <div class="container">
+              <table class="table">
+                <thead>
+                  <th>RUC</th>
+                  <th>Nombre</th>
+                  <th>Dirección</th>
+                  <th>Correo</th>
+                  <th>Teléfono</th>
+                </thead>
+          
+              </table>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-tab>
+    
+        
+    <mat-tab label="ADMINISTRADORES">  
+        <div class="input-group md-form form-sm form-2 pl-0">
+            <a (click)="openFormAdministrador()"><img src="assets/iconos/agregar.png" alt="agregar"  width="35" height="35"></a>
+            <input class="form-control my-0 py-1 red-border search" type="text"  name="filtroServicio" placeholder="Buscar">
+            <img class="input-img" src="./assets/iconos/buscar.png">
+        </div>
+      <mat-card>
+        <mat-card-content>
+          <div class="container">
+            <table class="table">
+              <thead>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+              </thead>
+
+            </table>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+</div>

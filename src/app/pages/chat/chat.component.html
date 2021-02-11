@@ -1,0 +1,85 @@
+<app-menu></app-menu>
+<div class="page-content">
+    <h1>CHAT</h1>
+
+    <div class="chat">
+        <div>
+            <button mat-raised-button class="btn-chat">NUEVO CHAT</button>
+
+            <div class="input-group md-form form-sm">
+                <input class="form-control search" type="text" placeholder="Buscar" aria-label="Search">
+                <img class="input-img" src="./assets/iconos/buscar.png">
+
+                <!--<div class="input-group-append">
+          <span class="input-group-text red lighten-3" id="basic-text1"><i class="fas fa-search text-grey"
+              aria-hidden="true"></i></span>
+        </div>-->
+            </div>
+
+            <div class="msg-bg">
+                <mat-list>
+                    <mat-list-item *ngFor="let chat of chatRooms" (click)="openChat(chat)">
+                        <img matListAvatar src="./assets/iconos/avatar.png">
+                        <h3 matLine> {{chat.id}} </h3>
+                        <p matLine>
+                            <span> {{chat.descripcion}} </span>
+
+                        </p>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+
+        </div>
+
+
+        <div class="chat-content">
+            <div class="chat-header">
+                <img class="img-avatar" src="./assets/iconos/avatar.png">
+                <span class="username">Usuario</span>
+            </div>
+            <div class="chat-bg">
+
+                <table class=tb-chat>
+                    <tr class="message-box" *ngFor="let message of messages">
+
+                        <div class="message"
+                            [ngClass]='{ "my-message text-right": message.myMsg, "other-message text-left": !message.myMsg}'>
+                            <b>
+                                {{message.from}}
+                            </b>
+                            <br>
+                            <span>
+                                {{message.msg}}
+                            </span>
+
+                            <img src={{message.urlPhoto}} *ngIf=message.isPhoto  class="imgChat">
+                        </div>
+                        <th class='time text-right'>
+                            <br>
+                            {{message.createdAt?.toMillis() | date:'short'}}
+                        </th>
+
+
+                    </tr>
+                </table>
+
+
+                <div class="chat-op">
+                    <input class="text-msg" type="text" placeholder="Escriba un mensaje aquí" [(ngModel)]="newMsg"
+                        (keyup.enter)="sendMessage()">
+                    <button class="btn-op">
+                        <img class="img-op" src="./assets/iconos/adjuntar.png">
+                        <input type="file" accept=".png, .jpg, .jpeg" (change)="uploadPhoto($event)" required>
+                    </button>
+                    <button class="btn-op" [disabled]='newMsg === ""' (click)='sendMessage()'>
+                        <img class="img-op" src="./assets/iconos/enviar.png">
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

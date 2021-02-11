@@ -1,0 +1,29 @@
+<app-menu></app-menu>
+<div class="page-content">
+    <h1>PROVEEDORES</h1>
+
+
+    <div class="input-group md-form form-sm form-2 pl-0">
+        <a (click)="openDialog()"><img src="assets/iconos/agregar.png" alt="agregar"  width="35" height="35"></a>
+        <input class="form-control my-0 py-1 red-border search" type="text"  name="filtroUsuario" placeholder="Buscar" [(ngModel)]="filtroUsuario">
+        <img class="input-img" src="./assets/iconos/buscar.png">
+    </div>
+
+    <table>
+        <tr>
+            <th></th>
+            <th>Apellido</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Habilitar/Inhabilitar</th>
+        </tr>
+        <tr *ngFor="let proveedor of proveedores | filtroproveedor:filtroUsuario">
+            <td>□</td>
+            <td>{{proveedor.lnameDriver}}</td>
+            <td>{{proveedor.nameDriver}}</td>
+            <td *ngIf="proveedor.stateDriver">Habilitado </td>
+            <td *ngIf="!proveedor.stateDriver">Deshabilitado </td>
+            <td><mat-slide-toggle checked="{{proveedor.stateDriver}}" (change)="cambiar(proveedor.idDriver,$event)" ></mat-slide-toggle></td>
+        </tr>
+    </table>
+</div>

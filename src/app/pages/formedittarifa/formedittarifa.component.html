@@ -1,0 +1,32 @@
+<h1>EDITAR TARIFA</h1>
+<h3>Información de la tarifa</h3>
+<form [formGroup]="firstFormGroup" (ngSubmit)="edit($event)">
+    <div class="container">
+        <h5>Nombre</h5>
+         <input  type="text" formControlName="nameFare" >
+    </div>
+
+    <div class="container">
+        <h5>Servicio</h5>
+        <mat-form-field >
+            <mat-select formControlName="idTypeServiceFare">
+                <mat-option *ngFor="let servicio of servicios"  value={{servicio.idTypeService}}> {{servicio.nameTypeService}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="container">
+        <h5>Precio/KM</h5>
+        <div class="row">
+            <input type="number" min="0" formControlName="minFare"/>
+            <p>km - </p>
+            <input type="number" min="0" formControlName="maxFare"/>
+            <p>km $</p>
+            <input type="number" min="0" formControlName="priceFare"/>
+        </div>
+    </div>
+        
+    <div class="row">
+        <button class="btn-cancelar" [mat-dialog-close]="true">Cancerlar</button>
+        <button class="btn-guardar-edit" [mat-dialog-close]="true" [disabled]="!firstFormGroup.valid" type="submit">Guardar</button>
+    </div>
+</form>

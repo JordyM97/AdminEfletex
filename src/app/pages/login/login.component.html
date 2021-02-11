@@ -1,0 +1,42 @@
+<!--<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <form (submit)="signIn()">
+                    <img src="assets/iconos/LOGO3.png" width="450px" alt="logo"/>
+                    <div class="form-group">
+                        <input type="text" name="email" class="form-control" placeholder="Correo" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="password"  name="password" class="form-control" placeholder="Contraseña" required>
+                    </div>
+                    <button class="btn btn-success btn-block">Iniciar sesión</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+<img class="img-bg" src="assets/images/TRANSPORTER_ADMINISTRADOR-02.png" width="450px" alt="logo"/>
+<div class="row" >
+    <div class="mx-auto">
+        <div class="card">
+            <img src="assets/iconos/LOGO3.png" width="450px" alt="logo"/>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <input type="text" name="email" class="form-control" placeholder="Correo"  #emailSignup />
+                    </div>
+                    <div class="form-group">
+                        <input type="password"  id="password" class="form-control"  placeholder="Contraseña"  showHideInput #passwordSignup/> 
+                        <i matSuffix
+                        class="material-icons"
+                        showHideTrigger="password"
+                        [showHideStatus]="{ materialIcon: true, id: 'password' }"></i>
+                    </div>
+                    <button class="btn btn-block" (click)="onSignin(emailSignup.value,passwordSignup.value)">Iniciar sesión</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

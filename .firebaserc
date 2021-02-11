@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "transporter-careapp": {
+      "hosting": {
+        "angular": [
+          "transporter-careapp"
+        ]
+      }
+    }
+  }
+}

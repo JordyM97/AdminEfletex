@@ -1,0 +1,50 @@
+<h1>Historial Proveedor</h1>
+<form [formGroup]="firstFormGroup" >
+    <div class="container">
+        <table class="table">
+            <tr>
+                <td><h5>Id </h5></td>
+                <td><input readonly="true" type="text" formControlName="idDriver"></td> 
+                <td><h5>Cédula </h5></td>
+                <td><input readonly="true" type="text" formControlName="ciDriver"></td>                
+            </tr>
+            <tr>
+                <td><h5>Nombre </h5></td>
+                <td><input readonly="true" type="text" formControlName="nameDriver"></td> 
+                <td><h5>Apellido </h5></td>
+                <td><input readonly="true" type="text" formControlName="lnameDriver"></td> 
+            </tr>
+            <tr>
+                <td><h5>Correo </h5></td>
+                <td><input readonly="true" type="text" formControlName="emailDriver"></td> 
+                <td><h5>Rate </h5></td>
+                <td><input readonly="true" type="text" formControlName="rateDriver"></td> 
+            </tr>
+            
+        </table>
+    </div>    
+    <h3>Servicios realizados por el Proveedor</h3>    
+    <div class="container">        
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>Fecha </th>
+                <th>id</th>
+                <th>Cliente</th>                
+                <th>Punto de llegada</th>
+                <th>Valor</th>
+            </tr>
+            <tr *ngFor="let servicio of servicios">
+                <td>{{servicio.startDate}}</td>
+                <td>{{servicio.idService}}</td>
+                <td>{{servicio.idClientService}}</td>                
+                <td>{{servicio.endidLocation}}</td>
+                <td>{{servicio.idPaymentService}}</td>                         
+              </tr>
+        </table>
+    </div>
+        
+    <div class="row">
+        <button class="btn-cancelar" [mat-dialog-close]="true">Cancelar</button>
+    </div>
+</form>

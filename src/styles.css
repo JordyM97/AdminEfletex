@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html{ font-family:sans-serif;} 
+body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+.page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  margin-top:2rem;
+  transition: all 0.4s;
+}
+
+.mat-slide-toggle-thumb {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+.mat-slide-toggle-bar {
+  background-color: grey;
+  border-radius: 15px !important;
+  height: 20px !important;
+}
+
+.mat-slide-toggle-thumb-container {
+    top: 1px !important;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color:#00ff00;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #fff;
+}

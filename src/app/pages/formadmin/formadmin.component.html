@@ -1,0 +1,21 @@
+<h1>AGREGAR ADMINISTRADOR</h1>
+<h3>Información del administrador</h3>
+<form [formGroup]="firstFormGroup" (ngSubmit)="save($event)">
+    <div class="container">
+        <h5>Correo</h5>
+         <input type="text" formControlName="email" >
+    </div>
+    <div class="container">
+        <h5>Nombre</h5>
+        <input type="text" formControlName="nombre" >
+    </div>
+    <div class="container">
+        <h5>Apellido</h5>
+        <input type="text" formControlName="apellido" >
+    </div>
+        
+    <div class="row">
+        <button class="btn-cancelar" [mat-dialog-close]="true">Cancerlar</button>
+        <button class="btn-guardar-edit" [mat-dialog-close]="true" [disabled]="!firstFormGroup.valid" type="submit">Guardar</button>
+    </div>
+</form>

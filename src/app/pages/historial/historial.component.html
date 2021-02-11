@@ -1,0 +1,91 @@
+<app-menu></app-menu>
+<div  class="page-content">
+    <h1>Historial</h1>
+  
+    <mat-tab-group dynamicHeight class="history">
+      <mat-tab label="Proveedores"> 
+        <h5>Información de Proveedores</h5>
+        <mat-card>
+          <mat-card-content>
+            <div class="container">
+              <table class="table">
+                <tr>
+                    <th></th>
+                    <th>Apellido</th>
+                    <th>Nombre</th>
+                    <th>Estado</th>
+                    <th>Calificación</th>
+                    <th>Total $</th>
+                </tr>
+                <tr *ngFor="let proveedor of proveedores | filtroproveedor:filtroUsuario">
+                    <td>□</td>
+                    <td>{{proveedor.lnameDriver}}</td>
+                    <td>{{proveedor.nameDriver}}</td>
+                    <td *ngIf="proveedor.stateDriver">Habilitado </td>
+                    <td *ngIf="!proveedor.stateDriver">Deshabilitado </td>
+                    <td>{{proveedor.rateDriver}}</td>
+                    <td>0</td>
+                    <td><button (click)="detalleProveedor(proveedor)">Ver Detalle</button></td>
+                </tr>
+            </table>
+              
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-tab>
+  
+      <mat-tab label="Clientes">
+        <h5>Información de Clientes</h5>
+        <mat-card>
+          <mat-card-content>
+            <div class="container">
+              <table class="table">
+                <tr>
+                    <th></th>
+                    <th>Apellido</th>
+                    <th>Nombre</th>
+                    <th>Estado</th>
+                    <th>Calificación</th>
+                    <th>Total $</th>
+                </tr>
+                <tr *ngFor="let proveedor of proveedores | filtroproveedor:filtroUsuario">
+                    <td>□</td>
+                    <td>{{proveedor.lnameDriver}}</td>
+                    <td>{{proveedor.nameDriver}}</td>
+                    <td *ngIf="proveedor.stateDriver">Habilitado </td>
+                    <td *ngIf="!proveedor.stateDriver">Deshabilitado </td>
+                    <td>{{proveedor.rateDriver}}</td>
+                    <td>0</td>
+                    <td><button (click)="detalleProveedor(proveedor)">Ver Detalle</button></td>
+                </tr>
+            </table>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-tab>
+          
+      <mat-tab label="Servicios">
+        <h5>Información de los servicios</h5>
+        <mat-card>
+          <mat-card-content>
+            <div class="container">
+              <table class="table">
+                <thead>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Total $</th>
+                </thead>
+                <tr *ngFor="let servicio of servicios | filtroservicio:filtroServicio">
+                  <td>{{servicio.nameTypeService}}</td>
+                  <td>{{servicio.descriptionTypeService}}</td>
+                  <td>0</td>
+                  <td><button (click)="detalleServicio(servicio)">Ver Detalle</button></td>           
+                  
+                </tr>
+              </table>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-tab>
+    </mat-tab-group>
+  </div>

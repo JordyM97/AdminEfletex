@@ -1,0 +1,39 @@
+[
+    {
+        "marca" : "Chevrolet", 
+        "modelo" : [
+                    {"value":"Dmax"}
+                    ]   
+    },
+    {
+        "marca" : "Ford", 
+        "modelo" : [
+                   {"value": "F150"},
+                   {"value": "Range"}
+                    ]
+    },
+    {
+        "marca" : "JAC", 
+        "modelo" : [
+                   {"value": "T6"}
+                    ]
+    },
+    {
+        "marca" : "Mazda", 
+        "modelo" : [
+                   {"value": "BT50"}
+                    ]
+    },
+    {
+        "marca" : "Toyota", 
+        "modelo" : [
+                   {"value": "Hilux"}
+                    ]
+    },
+    {
+        "marca" : "Volkswagen", 
+        "modelo" : [
+                   {"value": "Amarok"}
+                    ]
+    }
+]

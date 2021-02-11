@@ -1,0 +1,66 @@
+.img-bg{
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    margin-top: 1%;
+    position: fixed;
+}
+
+*{
+    font-family: sans-serif;
+}
+.menu{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5em;
+    margin-top: 2em;
+
+    
+}
+
+#logo{
+    height: 4em;    
+    display: inline;
+    position: absolute;
+    left: 3%;
+    padding-bottom: 1%;
+}
+.nav-link{
+    color:black;
+}
+
+
+.imgs{
+    height: 15em;
+    width: fit-content;
+    display: inline-grid;
+    grid-template-rows: 40% 20% 40%;
+    justify-content: center;
+    align-content: center;
+   
+    position: fixed;
+    bottom: 15%;
+    right:12%;
+}
+
+#logo2{
+    height: 45%;
+    justify-self: center;
+}
+
+.apps{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: auto;
+    grid-gap: 10px;
+    justify-items: center;
+}
+
+span{
+    color:white;
+    font-size: 1.5em;
+}
+#logo-app{
+    height: 70%;
+    margin-left: 5%;
+}

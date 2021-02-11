@@ -1,0 +1,38 @@
+<h1>Historial Servicios</h1>
+<form [formGroup]="firstFormGroup" >
+    <div class="container">
+        <table class="table">
+            <tr>
+                <td><h5>Nombre </h5></td>
+                <td><input readonly="true" type="text" formControlName="nameTypeService"></td> 
+                <td><h5>Descripción </h5></td>
+                <td><input readonly="true" type="text" formControlName="descriptionTypeService"></td> 
+            </tr>           
+            
+        </table>
+    </div>
+    <h3>Servicios por el tipo</h3>
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>Fecha </th>
+                <th>id</th>
+                <th>Cliente</th>                
+                <th>Punto de llegada</th>
+                <th>Valor</th>
+            </tr>
+            <tr *ngFor="let servicio of servicios">
+                <td>{{servicio.startDate}}</td>
+                <td>{{servicio.idService}}</td>
+                <td>{{servicio.idClientService}}</td>                
+                <td>{{servicio.endidLocation}}</td>
+                <td>{{servicio.idPaymentService}}</td>                         
+              </tr>
+        </table>
+    </div>
+        
+    <div class="row">
+        <button class="btn-cancelar" [mat-dialog-close]="true">Cancelar</button>
+    </div>
+</form>

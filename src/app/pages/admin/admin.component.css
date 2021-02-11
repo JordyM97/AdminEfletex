@@ -1,0 +1,79 @@
+*{
+    font-family: sans-serif;
+    
+}
+
+
+div h1 {
+    font-weight: bold;
+    color:#E5242F;
+    letter-spacing: -0.2px;
+    font-size: 28px;
+    margin-left: 12px;
+    font-weight: 580;
+}
+
+textarea {
+    width: 900px;
+    height: 350px;
+    margin-top: 14px;
+    margin-left: 30px;
+}
+
+.empresa{
+    background-color:  #EDEEF0;
+    max-width: 1000px;
+    margin-right: 10%;
+   
+    
+}
+
+
+.btn-editar{
+    margin-left: 900px;
+    border: none; 
+    color:cornflowerblue;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.input-img {
+    position:absolute;
+    bottom:10px;
+    right:15px;
+    width:20px;
+    height:20px;
+    margin-right: 5%;
+}
+
+input{
+    background-color: #D8D9DD;
+    border-radius: 5px;
+    width: 15px;
+}
+
+.input-group{
+    width: 25%;
+    left: 700px;
+    padding-top: 2%;
+}
+
+.input-group a{
+    margin-right: 20px;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #87868A;
+    opacity: 1; /* Firefox */
+    font-size: 12px;
+}
+
+.editar{
+    background-color: #E5242F;
+    color:#FFFFFF;
+    letter-spacing: 1px;
+    
+}
+
+mat-card{
+    margin: 2%;
+}

@@ -1,0 +1,32 @@
+
+.img-bg{
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+.row{
+    text-align: center;
+    padding: 8%;
+}
+
+
+.card{
+    width: 500px;
+    
+}
+
+button{
+    background-color: #E5242F;
+    color:white;
+}
+
+button:hover{
+    background-color: #E5242F;
+
+}
+
+input{
+    border-bottom: 1px solid black;
+}

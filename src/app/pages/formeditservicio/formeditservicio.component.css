@@ -1,0 +1,44 @@
+*{
+    font-family: sans-serif;
+}
+
+h1{
+    font-weight: bold;
+}
+
+h3{
+    font-style:italic; 
+    font-weight: 500;
+    color:black;
+    letter-spacing: 0.2px;
+}
+
+h5{
+    margin-bottom:2px;
+    margin-left: 8px;
+    color: #87868A;
+    font-weight:500;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    text-align: center;
+    text-transform: uppercase;
+    margin:10px;
+}
+
+.btn-guardar-edit{
+    background-color: #E5242F;
+    color: white;
+}
+
+.btn-guardar-edit:disabled{
+    opacity: 50%;
+    background-color: #E5242F;
+    color: white;
+}

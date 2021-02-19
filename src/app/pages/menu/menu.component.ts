@@ -13,6 +13,8 @@ export class MenuComponent  {
   isSignedIn = false;
   showPassword=false;
   passwordIcon='eye';
+  nombreAdmin= 'defecto';
+  correoAdmin= 'defecto';
 
   contrasenia: string
 
@@ -20,10 +22,13 @@ export class MenuComponent  {
   user:any;
   email:any;
   constructor(
-    private firebaseService: AuthService
+    private authService: AuthService
   ){}
 
   ngOnInit(){
+    this.nombreAdmin = localStorage.getItem('nombreAdmin');
+    this.correoAdmin = localStorage.getItem('correoAdmin');
+    console.log(this.nombreAdmin)
     if(localStorage.getItem('user')!== null)
     this.isSignedIn= true
     else
@@ -31,7 +36,7 @@ export class MenuComponent  {
   }
   logout(){
     this.isSignedIn=false;
-    this.firebaseService.logout();
+    this.authService.logout();
     this.isLogout.emit();
     
   }

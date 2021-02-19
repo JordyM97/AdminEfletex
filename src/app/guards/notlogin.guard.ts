@@ -6,6 +6,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { map } from 'rxjs/operators'
 import { isNullOrUndefined } from 'util';
 import { Router } from "@angular/router";
+import { AuthService } from '../services/auth.service';
 
 
 @Injectable({
@@ -15,7 +16,8 @@ export class NotloginGuard implements CanActivate {
   
   constructor(
     private AFauth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   /**
@@ -29,18 +31,16 @@ export class NotloginGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.AFauth.authState.pipe(map(auth => {
-      console.log(auth)
-      if (isNullOrUndefined(auth)) {
-       
+      if(!this.authService.getIsLogged()){
         return true
-      } else {
-        console.log(auth.email)
-        console.log(auth.uid)
+      }else{
         this.router.navigate(['/dashboard'])
-        return false
+        return true
+      }}));
 
-      }
-    }))
+
+
+      
   }
   
 }

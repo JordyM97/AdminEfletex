@@ -5,8 +5,9 @@ import { Observable } from 'rxjs';
 
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from "@angular/router";
-import { map } from 'rxjs/operators'
+import { map, take } from 'rxjs/operators'
 import { isNullOrUndefined } from 'util';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class AuthGuard implements CanActivate {
   
   constructor(
     private AFauth: AngularFireAuth,
-    private router: Router) {
+    private router: Router,
+    private authService: AuthService) {
 
   }
   
@@ -29,21 +31,16 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      return this.AFauth.authState.pipe(map(auth => {
-        console.log(auth)
-        if (isNullOrUndefined(auth)) {
-          this.router.navigate(['/login'])
-          return false
-        } else {
-          console.log(auth.email)
-          console.log(auth.uid)
-          return true
-  
-        }
-  
-      }))
-  
-  
+      this.authService.autoLogin();
+      return this.authService.user.pipe(take(1), map(user => {
+        const isAuth = !!user;
+            if (isAuth) {
+                return true;
+            } else {
+              this.router.navigate(['/login'])
+              return false;
+            }
+      }));
   }
   
 }

@@ -116,7 +116,7 @@ import { FormempresaComponent } from './pages/formempresa/formempresa.component'
     MatSidenavModule,
     MatCheckboxModule
   ],
-  providers: [ProveedorService,AuthService, ChatService ],
+  providers: [ProveedorService,AuthService, ChatService, MenuComponent],
   entryComponents:[MatDialogModule,MatSelectModule],
   bootstrap: [AppComponent]
 })

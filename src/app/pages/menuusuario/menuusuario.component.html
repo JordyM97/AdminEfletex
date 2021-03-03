@@ -10,18 +10,24 @@
     <table>
         <tr>
             <th></th>
+            <th>Cedula</th>
             <th>Apellido</th>
             <th>Nombre</th>
+            <th>Email</th>
+            <th>Celular</th>
             <th>Estado</th>
             <th>Habilitar/Inhabilitar</th>
         </tr>
-        <tr *ngFor="let proveedor of proveedores | filtroproveedor:filtroUsuario">
+        <tr *ngFor="let cliente of clientes | filtroproveedor:filtroUsuario">
             <td>□</td>
-            <td>{{proveedor.lnameDriver}}</td>
-            <td>{{proveedor.nameDriver}}</td>
-            <td *ngIf="proveedor.stateDriver">Habilitado </td>
-            <td *ngIf="!proveedor.stateDriver">Deshabilitado </td>
-            <td><mat-slide-toggle checked="{{proveedor.stateDriver}}" (change)="cambiar(proveedor.idDriver,$event)" ></mat-slide-toggle></td>
+            <td>{{cliente.cedula}}</td>
+            <td>{{cliente.last_name}}</td>
+            <td>{{cliente.first_name}}</td>
+            <td>{{cliente.email}}</td>
+            <td>{{cliente.celular}}</td>
+            <td *ngIf="cliente.is_active">Habilitado </td>
+            <td *ngIf="!cliente.is_active">Deshabilitado </td>
+            <td><mat-slide-toggle checked="{{cliente.is_active}}" (change)="cambiar(cliente.id,$event)" ></mat-slide-toggle></td>
         </tr>
     </table>
 </div>

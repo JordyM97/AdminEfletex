@@ -13,6 +13,7 @@ export class AuthService {
   public userApp: AdminUser;
   public currentUser:any;
   public user = new BehaviorSubject<any>(null);
+  private token: any;
   private nombreAdmin;
   private correoAdmin;
 
@@ -26,21 +27,23 @@ export class AuthService {
 
   login(credentials){
     return new Promise((resolve, reject) => {
-        let headers = new HttpHeaders(); 
-        this.http.post('https://axela.pythonanywhere.com/api/rest-auth/', credentials, {headers: headers}) 
-          .subscribe(res => {
-          this.isLogged = true
-          let data = JSON.parse(JSON.stringify(res));
-          localStorage.setItem('nombreAdmin', data.first_name);
-          localStorage.setItem('correoAdmin', data.email);
-          console.log(data)
-          this.user.next(credentials);
-          localStorage.setItem('userData', credentials);
-          this.router.navigate(['/dashboard'])
-          resolve("ok");
-          },(err) => {
-          resolve("bad");
-          });  });
+      let headers = new HttpHeaders(); 
+      this.http.post('https://axela.pythonanywhere.com/api/rest-auth/', credentials, {headers: headers}) 
+        .subscribe(res => {
+        this.isLogged = true
+        let data = JSON.parse(JSON.stringify(res));
+        this.token = data.token;
+        localStorage.setItem('nombreAdmin', data.first_name);
+        localStorage.setItem('correoAdmin', data.email);
+        localStorage.setItem('token', data.token);
+        console.log(data)
+        this.user.next(credentials);
+        localStorage.setItem('userData', credentials);
+        this.router.navigate(['/dashboard'])
+        resolve("ok");
+        },(err) => {
+        resolve("bad");
+        });  });
   }
 
   autoLogin() {
@@ -101,6 +104,10 @@ export class AuthService {
 
   getIsLogged(){
     return this.isLogged;
+  }
+
+  getToken(){
+    return this.token;
   }
 
 }

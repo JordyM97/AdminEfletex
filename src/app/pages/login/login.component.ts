@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if(localStorage.getItem('correo')!== null){
-    console.log("sdasd")
     this.isSignedIn= true
     this.isSignin.emit(true);
   }else{

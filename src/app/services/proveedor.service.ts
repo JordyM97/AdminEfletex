@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Proveedor} from '../models/proveedor';
 
 @Injectable({
@@ -7,11 +7,50 @@ import {Proveedor} from '../models/proveedor';
 })
 export class ProveedorService {
     API_URI='https://ctvehicular.pythonanywhere.com/api';
-    //proveedor:any=[];
+    API_URL='https://axela.pythonanywhere.com/api';
+    proveedores: Array<any>;
     constructor(
     private http:HttpClient
   ) { }
 
+
+  //Método para obtener todos los Clientes registrados
+  getDrivers(){
+    this.proveedores=[]
+    return new Promise((resolve, reject) => {
+      let headers = new HttpHeaders();
+      headers = headers.set('Authorization', 'token '+String(localStorage.getItem("token")));
+      this.http.get(`${this.API_URL}/driver/`, {headers: headers}).subscribe(res => {
+        let data = JSON.parse(JSON.stringify(res));
+        console.log(data)
+        data.forEach(element => {
+          console.log(element.userDriver)
+          this.proveedores.push(element.userDriver)
+        });
+        resolve("ok");
+        },(err) => {
+        resolve("bad");
+        });});
+  }
+
+  //Método para obtener la información de  los cliente registrados
+  /*getDriversInformacion(id:any){
+    return new Promise((resolve, reject) => {
+      let headers = new HttpHeaders();
+      headers = headers.set('Authorization', 'token '+String(localStorage.getItem("token")));
+      this.http.get(`${this.API_URL}/user/${id}/`, {headers: headers}).subscribe(res => {
+        let data = JSON.parse(JSON.stringify(res));
+        console.log(data)
+        resolve("ok");
+        },(err) => {
+        resolve("bad");
+        });});
+  }*/
+
+  getListaProveedores(){
+    console.log(this.proveedores.values())
+    return this.proveedores;
+  }
 
   //METODO PARA PEDIR AL BACKEND TODOS LOS PROVEEDORES REGISTRDOS
   getProveedores(){

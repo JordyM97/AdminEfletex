@@ -10,18 +10,30 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
   styleUrls: ['./menuproveedor.component.css']
 })
 export class MenuproveedorComponent implements OnInit {
-  proveedores:any=[]; //ARREGLO DE PROVEEDORES, ESTA SE COMUNICA CON EL HTML
-  proveedor:any=[];
+  proveedores:Array<any>;
   isChecked = true;
   filtroUsuario='';
 
   constructor(
     private dialog: MatDialog,
     private proveedorServicio:ProveedorService
-  ) { }
+  ) { 
+    this.proveedores = []
+  }
 
   ngOnInit(): void {
     this.obtenerProveedores();
+    this.obtenerDrivers();
+  }
+
+  async obtenerProveedores(){
+    await this.proveedorServicio.getProveedores();
+    this.proveedores = await this.proveedorServicio.getListaProveedores();
+    this.proveedores.forEach(element => {
+      console.log(element);
+      console.log("SSSSS");
+    });
+    console.log(this.proveedores)
   }
   
   openDialog() {
@@ -33,11 +45,15 @@ export class MenuproveedorComponent implements OnInit {
     dialogConfig.width='50%'
     const dialogRef =  this.dialog.open(FormproveedorComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
-      this.obtenerProveedores();
+      //this.obtenerProveedores();
     });
   }
 
-  obtenerProveedores(){
+  obtenerDrivers(){
+    this.proveedorServicio.getDrivers();
+  }
+
+  /*obtenerProveedores(){
         //ESTE METODO SE DEBE LLAMAR SIEMPRE QUE SE REALICE ALGUN CAMBIO DE LA DATA DEL PROVEEDOR
     //Y SE LA QUIERE VER REFLEJADA EN PANTALLA SIN NECESIDAD DE TENER QUE REFRESCAR EL NAVEGADOR
    // LLAMAR AL BACKEND PARA QUE ENVIE LA LISTA DE LOS PROVEEDORES
@@ -45,8 +61,8 @@ export class MenuproveedorComponent implements OnInit {
       res=>{this.proveedores=res},
       err=>console.log(err)
     )
-  }
-
+  }*/
+/*
   cambiar(id:string,event: MatSlideToggleChange){
     this.proveedorServicio.getProveedor(id).subscribe(
       res=>{
@@ -66,6 +82,6 @@ export class MenuproveedorComponent implements OnInit {
       },
       err=>console.log(err)
     );
-  }
+  }*/
 
 }

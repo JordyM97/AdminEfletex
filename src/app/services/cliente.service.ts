@@ -25,9 +25,7 @@ export class ClienteService {
       headers = headers.set('Authorization', 'token '+String(localStorage.getItem("token")));
       this.http.get(`${this.API_URL}/client/`, {headers: headers}).subscribe(res => {
         let data = JSON.parse(JSON.stringify(res));
-        console.log(data)
         data.forEach(element => {
-          console.log(element.userClient)
           this.clientes.push(element.userClient)
         });
         resolve("ok");
@@ -52,7 +50,6 @@ export class ClienteService {
   }*/
 
   getListaClientes(){
-    console.log(this.clientes.values())
     return this.clientes;
   }
 

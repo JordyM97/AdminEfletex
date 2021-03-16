@@ -11,18 +11,24 @@
               <table class="table">
                 <tr>
                     <th></th>
+                    <th>Cedula</th>
                     <th>Apellido</th>
                     <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Celular</th>
                     <th>Estado</th>
                     <th>Calificación</th>
                     <th>Total $</th>
                 </tr>
                 <tr *ngFor="let proveedor of proveedores | filtroproveedor:filtroUsuario">
                     <td>□</td>
-                    <td>{{proveedor.lnameDriver}}</td>
-                    <td>{{proveedor.nameDriver}}</td>
-                    <td *ngIf="proveedor.stateDriver">Habilitado </td>
-                    <td *ngIf="!proveedor.stateDriver">Deshabilitado </td>
+                    <td>{{proveedor.cedula}}</td>
+                    <td>{{proveedor.last_name}}</td>
+                    <td>{{proveedor.first_name}}</td>
+                    <td>{{proveedor.email}}</td>
+                    <td>{{proveedor.celular}}</td>
+                    <td *ngIf="proveedor.is_active">Habilitado </td>
+                    <td *ngIf="!proveedor.is_active">Deshabilitado </td>
                     <td>{{proveedor.rateDriver}}</td>
                     <td>0</td>
                     <td><button (click)="detalleProveedor(proveedor)">Ver Detalle</button></td>
@@ -42,19 +48,25 @@
               <table class="table">
                 <tr>
                     <th></th>
+                    <th>Cedula</th>
                     <th>Apellido</th>
                     <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Celular</th>
                     <th>Estado</th>
                     <th>Calificación</th>
                     <th>Total $</th>
                 </tr>
-                <tr *ngFor="let proveedor of proveedores | filtroproveedor:filtroUsuario">
+                <tr *ngFor="let cliente of clientes | filtroproveedor:filtroUsuario">
                     <td>□</td>
-                    <td>{{proveedor.lnameDriver}}</td>
-                    <td>{{proveedor.nameDriver}}</td>
-                    <td *ngIf="proveedor.stateDriver">Habilitado </td>
-                    <td *ngIf="!proveedor.stateDriver">Deshabilitado </td>
-                    <td>{{proveedor.rateDriver}}</td>
+                    <td>{{cliente.cedula}}</td>
+                    <td>{{cliente.last_name}}</td>
+                    <td>{{cliente.first_name}}</td>
+                    <td>{{cliente.email}}</td>
+                    <td>{{cliente.celular}}</td>
+                    <td *ngIf="cliente.is_active">Habilitado </td>
+                    <td *ngIf="!cliente.is_active">Deshabilitado </td>
+                    <td>{{cliente.rateDriver}}</td>
                     <td>0</td>
                     <td><button (click)="detalleProveedor(proveedor)">Ver Detalle</button></td>
                 </tr>

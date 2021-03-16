@@ -14,11 +14,16 @@ import {HistorialproveedorComponent} from './pages/historialproveedor/historialp
 import {HistorialclienteComponent} from './pages/historialcliente/historialcliente.component';
 import {HistorialservicioComponent} from './pages/historialservicio/historialservicio.component';
 import {AdminComponent} from './pages/admin/admin.component';
+import { MapaComponent } from './pages/mapa/mapa.component';
 
 //Guard para la pantalla de login en authentication
 import { AuthGuard } from './guards/auth.guard';
 //Guard para la pantalla de login en authentication
 import { NotloginGuard } from './guards/notlogin.guard'
+import { ComentariosSugerenciasComponent } from './pages/comentarios-sugerencias/comentarios-sugerencias.component';
+import { DetallesComentariosComponent } from './pages/detalles-comentarios/detalles-comentarios.component';
+import { DetallesSugerenciasComponent } from './pages/detalles-sugerencias/detalles-sugerencias.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -97,6 +102,26 @@ const routes: Routes = [
   {
     path:'historialservicio',
     component:HistorialservicioComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'mapa',
+    component:MapaComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'comentarios-sugerencias',
+    component:ComentariosSugerenciasComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'detalle-comentario',
+    component:DetallesComentariosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'detalle-sugerencia',
+    component:DetallesSugerenciasComponent,
     canActivate: [AuthGuard]
   }
 

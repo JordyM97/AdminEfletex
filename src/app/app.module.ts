@@ -40,7 +40,10 @@ import {HistorialComponent} from './pages/historial/historial.component';
 import {HistorialproveedorComponent} from './pages/historialproveedor/historialproveedor.component';
 import {HistorialclienteComponent} from './pages/historialcliente/historialcliente.component';
 import {HistorialservicioComponent} from './pages/historialservicio/historialservicio.component';
-
+import { MapaComponent } from './pages/mapa/mapa.component';
+import { ComentariosSugerenciasComponent } from './pages/comentarios-sugerencias/comentarios-sugerencias.component'
+import { DetallesComentariosComponent } from './pages/detalles-comentarios/detalles-comentarios.component';
+import { DetallesSugerenciasComponent } from './pages/detalles-sugerencias/detalles-sugerencias.component'
 
 import {ChatService} from './services/chat.service';
 import { ProvWebComponent } from './pages/prov-web/prov-web.component';
@@ -56,6 +59,10 @@ import { PoliticasComponent } from './modals/politicas/politicas.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { FormadminComponent } from './pages/formadmin/formadmin.component';
 import { FormempresaComponent } from './pages/formempresa/formempresa.component';
+
+import { HighchartsChartModule } from 'highcharts-angular';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -86,8 +93,10 @@ import { FormempresaComponent } from './pages/formempresa/formempresa.component'
     AdminComponent,
     FormadminComponent,
     FormempresaComponent,
-   
-
+    MapaComponent,
+    ComentariosSugerenciasComponent,
+    DetallesComentariosComponent,
+    DetallesSugerenciasComponent
   ],
   imports: [
     BrowserModule,
@@ -114,7 +123,11 @@ import { FormempresaComponent } from './pages/formempresa/formempresa.component'
     MatListModule,
     MatGridListModule,
     MatSidenavModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HighchartsChartModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD1yk1QZHkYQWxO-JZ5idDHcfHpkKzf0tg'
+    })
   ],
   providers: [ProveedorService,AuthService, ChatService, MenuComponent],
   entryComponents:[MatDialogModule,MatSelectModule],

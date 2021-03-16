@@ -1,0 +1,9 @@
+.mapa{
+    height: 550px;
+    margin-right: 1.5rem;
+    background-color: aquamarine;
+}
+
+agm-map{
+    height: 100%;
+}

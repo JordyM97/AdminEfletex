@@ -23,7 +23,6 @@ export class MenuproveedorComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerProveedores();
-    this.obtenerDrivers();
   }
 
   async obtenerProveedores(){
@@ -31,9 +30,7 @@ export class MenuproveedorComponent implements OnInit {
     this.proveedores = await this.proveedorServicio.getListaProveedores();
     this.proveedores.forEach(element => {
       console.log(element);
-      console.log("SSSSS");
     });
-    console.log(this.proveedores)
   }
   
   openDialog() {
@@ -49,8 +46,8 @@ export class MenuproveedorComponent implements OnInit {
     });
   }
 
-  obtenerDrivers(){
-    this.proveedorServicio.getDrivers();
+  cambiar(id:string){
+    console.log("el id es "+id);
   }
 
   /*obtenerProveedores(){

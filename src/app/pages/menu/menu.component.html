@@ -8,12 +8,14 @@
     </div>
         
     <div class="vertical-menu">
+        <a class="nav-link" routerLink="/dashboard">Dashboard</a>
         <a class="nav-link" routerLink="/usuarios">Usuarios</a>
         <a class="nav-link" routerLink="/proveedor">Proveedores</a>
         <a class="nav-link" routerLink="/empresa">Empresa</a>
         <a class="nav-link" routerLink="/historial">Historiales</a>
-        <a class="nav-link">Reportes</a>
-        <a class="nav-link">Mapa</a>
+        <a class="nav-link" routerLink="/comentarios-sugerencias">Comentarios y Sugerencias</a>
+        <a class="nav-link" routerLink="/mapa">Mapa</a>
+        <a class="nav-link" routerLink="/chat">Chat</a>
         <a class="nav-link" routerLink="/administrador">Administrador</a>
     </div>                    
 </div>
@@ -22,12 +24,8 @@
 
 <div class="page-content" id="content">
    <div id="header">
-        <a class="nav-link" routerLink="/dashboard">
-            <img id="logo" src="assets/iconos/logo.png" alt="logo" width="220" height="25">
-        </a>
-        <a class="nav-link" routerLink="/chat">
-            <img class="img-chat" src="./assets/iconos/chat_activo.png" >
-        </a>
+            <img id="logo" src="assets/iconos/efletex-blanco.png" alt="logo" width="300" height="86">
+            <!--<img class="img-chat" src="./assets/iconos/chat_activo.png" >-->
         <button class="logout"  id="cerrar"(click)="logout()">Cerrar sesión</button>
     </div>
     

@@ -15,16 +15,14 @@ export class ProveedorService {
 
 
   //Método para obtener todos los Clientes registrados
-  getDrivers(){
+  getProveedores(){
     this.proveedores=[]
     return new Promise((resolve, reject) => {
       let headers = new HttpHeaders();
       headers = headers.set('Authorization', 'token '+String(localStorage.getItem("token")));
       this.http.get(`${this.API_URL}/driver/`, {headers: headers}).subscribe(res => {
         let data = JSON.parse(JSON.stringify(res));
-        console.log(data)
         data.forEach(element => {
-          console.log(element.userDriver)
           this.proveedores.push(element.userDriver)
         });
         resolve("ok");
@@ -48,13 +46,7 @@ export class ProveedorService {
   }*/
 
   getListaProveedores(){
-    console.log(this.proveedores.values())
     return this.proveedores;
-  }
-
-  //METODO PARA PEDIR AL BACKEND TODOS LOS PROVEEDORES REGISTRDOS
-  getProveedores(){
-    return this.http.get(`${this.API_URI}/driver/`);
   }
 
   //METODO PARA PEDIR AL BACKEND SOLO UN PROVEEDOR REGISTRADO

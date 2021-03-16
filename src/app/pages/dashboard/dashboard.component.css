@@ -4,3 +4,8 @@ div h1 {
     color:#E5242F;
     letter-spacing: 1px;
 }
+
+#flexcontainer {
+    display: flex;
+  }
+

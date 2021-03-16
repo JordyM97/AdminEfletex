@@ -22,7 +22,6 @@ export class MenuusuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.obtenerUsuarios();
     this.obtenerClientes();
   }
 
@@ -31,20 +30,7 @@ export class MenuusuarioComponent implements OnInit {
     this.clientes = await this.clienteServicio.getListaClientes();
     this.clientes.forEach(element => {
       console.log(element);
-      console.log("FFF");
     });
-    console.log(this.clientes)
-  }
-
-  obtenerUsuarios(){
-    //ESTE METODO SE DEBE LLAMAR SIEMPRE QUE SE REALICE ALGUN CAMBIO DE LA DATA DEL PROVEEDOR
-    //Y SE LA QUIERE VER REFLEJADA EN PANTALLA SIN NECESIDAD DE TENER QUE REFRESCAR EL NAVEGADOR
-    // LLAMAR AL BACKEND PARA QUE ENVIE LA LISTA DE LOS PROVEEDORES
-    this.proveedorServicio.getProveedores().subscribe(
-    res=>{this.proveedores=res 
-      console.log(res)},
-    err=>console.log(err)
-    )
   }
 
   cambiar(id:string){

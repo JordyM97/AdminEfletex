@@ -27,9 +27,10 @@ table tr{
 
 
 table tr th{
-    background-color: #D8D9DD;
+    background-color: #b9e5fb;
     font-weight: bold;
     letter-spacing: 0.4px;
+    color: #282F69;
 }
 
 table tr td{
@@ -37,7 +38,7 @@ table tr td{
 }
 
 input{
-    background-color: #D8D9DD;
+    background-color: #b9e5fb;
     border-radius: 5px;
 }
 
@@ -50,13 +51,13 @@ input{
     position:absolute;
     bottom:10px;
     right:15px;
-    width:20px;
+    width:30px;
     height:20px;
     margin-right: 5%;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #87868A;
+    color: #FFFFFF;
     opacity: 1; /* Firefox */
     font-size: 12px;
 }

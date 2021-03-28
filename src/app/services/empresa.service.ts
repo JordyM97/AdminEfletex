@@ -1,16 +1,56 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {Empresa} from '../models/empresa';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
 export class EmpresaService {
   API_URI='https://ctvehicular.pythonanywhere.com/api';
   API_URI_SV = 'http://ctvehicular.pythonanywhere.com/api/history/service';
+  API_URL='https://axela.pythonanywhere.com/api';
+  servicios: Array<any>;
+  tipoServicio: Array<any>;
 
   constructor(
     private http:HttpClient
   ) { }
+
+  //Método para obtener todos los Clientes registrados
+  getTipoServicios(){
+    this.tipoServicio=[]
+    return new Promise((resolve, reject) => {
+      let headers = new HttpHeaders();
+      headers = headers.set('Authorization', 'token '+String(localStorage.getItem("token")));
+      this.http.get(`${this.API_URL}/typeservice/`, {headers: headers}).subscribe(res => {
+        let data = JSON.parse(JSON.stringify(res));
+        console.log(data)
+        data.forEach(element => {
+          this.tipoServicio.push(element)
+        });
+        resolve("ok");
+        },(err) => {
+        resolve("bad");
+        });});
+  }
+
+  //Método para obtener todos los Clientes registrados
+  putTipoServicios(informacionModificar, id){
+    this.tipoServicio=[]
+    return new Promise((resolve, reject) => {
+      let headers = new HttpHeaders();
+      headers = headers.set('Authorization', 'token '+String(localStorage.getItem("token")));
+      this.http.put(`${this.API_URL}/typeservice/`+String(id)+'/', informacionModificar , {headers: headers}).subscribe(res => {
+        let data = JSON.parse(JSON.stringify(res));
+        console.log(data)
+        resolve("ok");
+        },(err) => {
+        resolve("bad");
+        });});
+  }
+
+  getListaTipoServicios(){
+    return this.tipoServicio;
+  }
 
   //METODO PARA PEDIR AL BACKEND LA POLITICA DE LA EMPRESA
   getPolitica(){

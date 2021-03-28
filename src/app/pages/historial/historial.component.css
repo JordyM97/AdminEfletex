@@ -19,8 +19,21 @@ textarea {
     margin-left: 30px;
 }
 
+table thead th{
+    font-weight: bold;
+    letter-spacing: 0.4px;
+    color: #282F69;
+}
+
+table tr td{
+    letter-spacing: 0.4px;
+    color: #282F69;
+}
+
 .history{
-    background-color:  #EDEEF0;
+    background-color: #b9e5fb;
+    max-width: 95%;
+    margin-right: 10%;
 }
 
 .btn-editar{
@@ -64,4 +77,17 @@ input{
     background-color: #E5242F;
     color:#FFFFFF;
     letter-spacing: 1px;
+}
+
+.detail-img{
+    width:90px;
+    height:50px;
+}
+
+.detail-img:hover{
+    filter: opacity(.8);
+}
+
+.detail-cell{
+    padding: 0px;
 }

@@ -1,0 +1,38 @@
+<app-menu></app-menu>
+<div class="page-content">
+    <h1>Envio de notificaciones</h1>
+    <form [formGroup]="formNotificaciones">
+        <div class="centro">
+            <table class="table">
+                <tr>
+                    <td><h2>Destinatario </h2></td>
+                    <td><mat-form-field appearance="fill">
+                        <mat-select  formControlName="destinatarioNotificacion" required>
+                            <mat-option value="clientes">Clientes</mat-option>
+                            <mat-option value="proveedores">Proveedores</mat-option>
+                        </mat-select>
+                    </mat-form-field></td>              
+                </tr>
+                <tr>
+                    <td><h2>Título </h2></td>
+                    <td><mat-form-field appearance="fill">
+                        <input matInput type="text" formControlName="tituloNotificacion" required> 
+                    </mat-form-field></td>
+                </tr>
+                <tr>
+                    <td><h2>Descripción </h2></td>
+                    <td><mat-form-field appearance="fill">
+                        <textarea matInput type="text" formControlName="descripcionNotificacion" required cdkTextareaAutosize #autosize="cdkTextareaAutosize"></textarea>
+                    </mat-form-field></td> 
+                </tr>
+                <tr>
+                    <td><h2>Adjuntar imagen (Opcional) </h2></td>
+                    <td><input class="getFile"  type="file" accept=".png, .jpg, .jpeg" (change)="uploadNotificacion($event)"></td> 
+                </tr>
+                <tr>
+                    <td><button (click)="enviarNotificacion()">Enviar notificación </button></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>

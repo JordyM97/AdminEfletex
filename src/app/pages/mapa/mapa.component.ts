@@ -19,6 +19,7 @@ export class MapaComponent implements OnInit {
   lng:any;
   zoom: any;
 
+
   latVehicle: any;
   lngVehicle: any;
 
@@ -44,7 +45,6 @@ export class MapaComponent implements OnInit {
     this.PositionD.subscribe(val=>{ 
       this.latVehicle = JSON.parse(val.location).lat
       this.lngVehicle = JSON.parse(val.location).lng
-      console.log(this.latVehicle)
       })
   }
 

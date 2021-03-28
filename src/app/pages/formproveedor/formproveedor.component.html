@@ -7,31 +7,31 @@
       <div class="izquierda">
         <div class="container">
           <h5>Correo electrónico</h5>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="legacy">
            <input matInput type="text" formControlName="emailDriver" required>
           </mat-form-field>
         </div>
         <div class="container">
           <h5>Cédula</h5>
-          <mat-form-field appearance="fill">
-          <input matInput type="text" id="cedula" (change)="validate()" formControlName="ciDriver" required> 
+          <mat-form-field appearance="legacy">
+          <input matInput type="text" id="cedula" formControlName="ciDriver" required> 
           </mat-form-field>
         </div>
        <div class="container">
         <h5>Nombre</h5>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="legacy">
             <input matInput type="text" formControlName="nameDriver" required> 
           </mat-form-field>
         </div>
         <div class="container">
           <h5>Apellidos</h5>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="legacy">
             <input matInput type="text" formControlName="lnameDriver" required> 
           </mat-form-field>
         </div>
         <div class="container">
           <h5>Fecha de nacimiento</h5>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="legacy">
             <input matInput id="myDate" type="date" (change)="validarEdad()" formControlName="birthdateDriver" required/>
           </mat-form-field>
         </div>
@@ -40,7 +40,7 @@
       <div class="derecha">
         <div class="container">
           <h5>Sexo</h5>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="legacy">
             <mat-select  formControlName="sexDriver" required>
               <mat-option value="hombre">Hombre</mat-option>
               <mat-option value="mujer">Mujer</mat-option>
@@ -49,13 +49,13 @@
         </div>
         <div class="container">
           <h5>Dirección</h5>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="legacy">
             <input matInput type="text" formControlName="addressDriver" required> 
           </mat-form-field>        
         </div>
         <div class="container">
           <h5>Teléfono</h5>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="legacy">
             <input matInput type="text" formControlName="phoneDriver" required> 
           </mat-form-field>        
         </div>
@@ -81,7 +81,7 @@
       <div class="izquierda">
         <div class="container">
           <h5>Placa</h5>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="legacy">
             <input matInput type="text" formControlName="plateVehicle" required> 
           </mat-form-field>
         </div>
@@ -90,7 +90,7 @@
          <!-- <mat-form-field appearance="fill">
             <input matInput type="text" formControlName="brandVehicle" required> 
           </mat-form-field>-->
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="legacy">
             <mat-select formControlName="brandVehicle">
               <mat-option *ngFor="let item of carsList" value={{item.marca}}>{{item.marca}}</mat-option>
             </mat-select>
@@ -98,7 +98,7 @@
         </div>
         <div class="container">
           <h5>Modelo</h5>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="legacy">
           <mat-select formControlName="modelVehicle" >
             
             <mat-optgroup  *ngFor="let item of carsList" [label]="item.marca"
@@ -111,13 +111,13 @@
         </div>
         <div class="container">
           <h5>Año</h5>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="legacy">
             <input matInput type="text" formControlName="yearVehicle" required> 
           </mat-form-field>
         </div>
         <div class="container">
           <h5>Color</h5>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="legacy">
             <input matInput type="text" formControlName="colorVehicle" required> 
           </mat-form-field>
         </div>
@@ -139,7 +139,7 @@
          </div>
         <div class="container">
           <h5>Servicio</h5>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="legacy">
             <mat-select >
               <mat-option value="mudanza">Mudanza</mat-option>
             </mat-select>
@@ -147,7 +147,7 @@
         </div>
         <div class="container">
           <h5>Tipo de vehículo</h5>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="legacy">
             <mat-select  formControlName="typeVehicle" required>
               <mat-option value="camion">Camión</mat-option>
               <mat-option value="camioneta">Camioneta</mat-option>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog,MatDialogConfig } from '@angular/material/dialog';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { ServiciosService } from 'src/app/services/servicios.service';
 import {EmpresaService} from '../../services/empresa.service';
 import {ProveedorService} from '../../services/proveedor.service';
 import {HistorialproveedorComponent} from '../historialproveedor/historialproveedor.component';
@@ -19,9 +20,10 @@ export class HistorialComponent implements OnInit {
   filtroUsuario='';
 
   constructor(
-    private empresaServicio:EmpresaService,
-    private proveedorServicio:ProveedorService,
-    private clienteServicio:ClienteService,
+    private empresaServicio: EmpresaService,
+    private proveedorServicio: ProveedorService,
+    private clienteServicio: ClienteService,
+    private serviciosServicio: ServiciosService,
     private dialog: MatDialog,
   ) { 
     this.proveedores = []
@@ -31,6 +33,7 @@ export class HistorialComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerProveedores();
     this.obtenerClientes();
+    this.obtenerServicios();
     this.cargarServicios();
   }
 
@@ -51,6 +54,10 @@ export class HistorialComponent implements OnInit {
     });
   }
 
+  async obtenerServicios(){
+    await this.serviciosServicio.getServicios();
+  }
+
   cargarServicios(){
     this.empresaServicio.getServicios().subscribe(
       res=>{this.servicios=res},
@@ -67,13 +74,21 @@ export class HistorialComponent implements OnInit {
       {
         width:'100%',
         data:{
-          idDriver:proveedor.id,
-          emailDriver:proveedor.email,
-          ciDriver:proveedor.cedula,
-          nameDriver:proveedor.first_name,
-          lnameDriver:proveedor.last_name,
-          rateDriver:proveedor.rateDriver,          
+          idDriver:1,
+          emailDriver:"leonardogp@gmail.com",
+          ciDriver:"0926443721",
+          nameDriver:"Leonardo",
+          lnameDriver:"Gomez",
+          rateDriver:"4",          
         }
+        /* 
+        idDriver:proveedor.id,
+        emailDriver:proveedor.email,
+        ciDriver:proveedor.cedula,
+        nameDriver:proveedor.first_name,
+        lnameDriver:proveedor.last_name,
+        rateDriver:proveedor.rateDriver,   
+        */
       }
     );
     dialogRef.afterClosed().subscribe(result => {

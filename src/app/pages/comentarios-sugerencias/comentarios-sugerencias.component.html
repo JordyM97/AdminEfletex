@@ -1,15 +1,20 @@
 <app-menu></app-menu>
 <div class="page-content">
+    <h1>Comentarios y sugerencias</h1>
     <mat-tab-group dynamicHeight class="history">
       <mat-tab label="Comentarios"> 
         <h5>Comentarios</h5>
         <mat-card>
           <mat-card-content>
             <div class="container">
-              <table class="table">
-                <tr>
-                </tr>
-            </table>
+            <mat-card class="example-card" (click)="detalleComentario()"> 
+              <mat-card-header> 
+                  <mat-card-title>cliente@gmail.com</mat-card-title> 
+                  <mat-card-subtitle>Publicado: 12/03/2021</mat-card-subtitle> 
+                  <mat-card-subtitle>Asunto: Buen servicio</mat-card-subtitle> 
+              </mat-card-header> 
+              <!--<mat-card-content><p>Asunto: Buen servicio</p></mat-card-content>-->
+            </mat-card> 
             </div>
           </mat-card-content>
         </mat-card>

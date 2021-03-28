@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
-import { DetallesComentariosComponent } from '../detalles-comentarios/detalles-comentarios.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { FormproveedorComponent } from '../formproveedor/formproveedor.component';
 
 @Component({
-  selector: 'app-comentarios-sugerencias',
-  templateUrl: './comentarios-sugerencias.component.html',
-  styleUrls: ['./comentarios-sugerencias.component.css']
+  selector: 'app-peticiones',
+  templateUrl: './peticiones.component.html',
+  styleUrls: ['./peticiones.component.css']
 })
-export class ComentariosSugerenciasComponent implements OnInit {
+export class PeticionesComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
@@ -16,15 +16,15 @@ export class ComentariosSugerenciasComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  detalleComentario(){
+  detallePeticion(){
     const dialogConfig=new MatDialogConfig();
     dialogConfig.disableClose=false;
     dialogConfig.autoFocus=true;
     dialogConfig.height='100%';
     dialogConfig.width='100%';
-    const dialogRef =  this.dialog.open(DetallesComentariosComponent,
+    const dialogRef =  this.dialog.open(FormproveedorComponent,
       {
-        width:'100%',
+        width:'50%',
         /*data:{
           emailUsuario:proveedor.id,
           fecha:proveedor.email,
@@ -39,5 +39,4 @@ export class ComentariosSugerenciasComponent implements OnInit {
 
   cargarServicios(){
   }
-
 }

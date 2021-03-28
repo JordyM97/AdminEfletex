@@ -3,6 +3,7 @@ import {MatDialog,MatDialogConfig } from '@angular/material/dialog';
 import {FormproveedorComponent} from '../formproveedor/formproveedor.component';
 import {ProveedorService} from '../../services/proveedor.service';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-menuproveedor',
@@ -13,6 +14,7 @@ export class MenuproveedorComponent implements OnInit {
   proveedores:Array<any>;
   isChecked = true;
   filtroUsuario='';
+  fileName= 'ExcelSheetProveedores.xlsx';  
 
   constructor(
     private dialog: MatDialog,
@@ -48,6 +50,20 @@ export class MenuproveedorComponent implements OnInit {
 
   cambiar(id:string){
     console.log("el id es "+id);
+  }
+
+  exportexcel(): void{
+      /* table id is passed over here */   
+      let element = document.getElementById('tabla-proveedor'); 
+      const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+
+      /* generate workbook and add the worksheet */
+      const wb: XLSX.WorkBook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+      /* save to file */
+      XLSX.writeFile(wb, this.fileName);
+    
   }
 
   /*obtenerProveedores(){

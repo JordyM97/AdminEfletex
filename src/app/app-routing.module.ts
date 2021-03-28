@@ -23,6 +23,8 @@ import { NotloginGuard } from './guards/notlogin.guard'
 import { ComentariosSugerenciasComponent } from './pages/comentarios-sugerencias/comentarios-sugerencias.component';
 import { DetallesComentariosComponent } from './pages/detalles-comentarios/detalles-comentarios.component';
 import { DetallesSugerenciasComponent } from './pages/detalles-sugerencias/detalles-sugerencias.component';
+import { PeticionesComponent } from './pages/peticiones/peticiones.component';
+import { NotificacionesComponent } from './pages/notificaciones/notificaciones.component';
 
 const routes: Routes = [
   {
@@ -122,6 +124,16 @@ const routes: Routes = [
   {
     path:'detalle-sugerencia',
     component:DetallesSugerenciasComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'peticiones',
+    component:PeticionesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'notificaciones',
+    component:NotificacionesComponent,
     canActivate: [AuthGuard]
   }
 

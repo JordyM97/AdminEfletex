@@ -39,13 +39,9 @@ export class FormeditservicioComponent implements OnInit {
     event.preventDefault();
     if(this.firstFormGroup.valid){
       this.servicio=this.firstFormGroup.value;
-      this.empresaService.editServicio(this.servicio,this.data.id)
-      .subscribe(
-        value=>
-        {
-          alert("Tarifa creada");
-        }
-      );
+      console.log(this.servicio)
+      this.empresaService.putTipoServicios(this.servicio,this.data.id)
+      window.location.reload();
     }
   }
 

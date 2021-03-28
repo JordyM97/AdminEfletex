@@ -44,6 +44,8 @@ import { MapaComponent } from './pages/mapa/mapa.component';
 import { ComentariosSugerenciasComponent } from './pages/comentarios-sugerencias/comentarios-sugerencias.component'
 import { DetallesComentariosComponent } from './pages/detalles-comentarios/detalles-comentarios.component';
 import { DetallesSugerenciasComponent } from './pages/detalles-sugerencias/detalles-sugerencias.component'
+import { PeticionesComponent } from './pages/peticiones/peticiones.component';
+import { NotificacionesComponent } from './pages/notificaciones/notificaciones.component';
 
 import {ChatService} from './services/chat.service';
 import { ProvWebComponent } from './pages/prov-web/prov-web.component';
@@ -62,6 +64,7 @@ import { FormempresaComponent } from './pages/formempresa/formempresa.component'
 
 import { HighchartsChartModule } from 'highcharts-angular';
 import { AgmCoreModule } from '@agm/core';
+import { NotificacionEnviadaComponent } from './pages/notificacion-enviada/notificacion-enviada.component';
 
 
 @NgModule({
@@ -96,7 +99,10 @@ import { AgmCoreModule } from '@agm/core';
     MapaComponent,
     ComentariosSugerenciasComponent,
     DetallesComentariosComponent,
-    DetallesSugerenciasComponent
+    DetallesSugerenciasComponent,
+    PeticionesComponent,
+    NotificacionesComponent,
+    NotificacionEnviadaComponent,
   ],
   imports: [
     BrowserModule,
@@ -115,6 +121,7 @@ import { AgmCoreModule } from '@agm/core';
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
+    MatCardModule,
     HttpClientModule,
     MatSlideToggleModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -125,6 +132,7 @@ import { AgmCoreModule } from '@agm/core';
     MatSidenavModule,
     MatCheckboxModule,
     HighchartsChartModule,
+    MatFormFieldModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD1yk1QZHkYQWxO-JZ5idDHcfHpkKzf0tg'
     })

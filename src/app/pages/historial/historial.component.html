@@ -9,8 +9,7 @@
           <mat-card-content>
             <div class="container">
               <table class="table">
-                <tr>
-                    <th></th>
+                <thead>
                     <th>Cedula</th>
                     <th>Apellido</th>
                     <th>Nombre</th>
@@ -19,19 +18,18 @@
                     <th>Estado</th>
                     <th>Calificación</th>
                     <th>Total $</th>
-                </tr>
+                </thead>
                 <tr *ngFor="let proveedor of proveedores | filtroproveedor:filtroUsuario">
-                    <td>□</td>
-                    <td>{{proveedor.cedula}}</td>
-                    <td>{{proveedor.last_name}}</td>
-                    <td>{{proveedor.first_name}}</td>
-                    <td>{{proveedor.email}}</td>
-                    <td>{{proveedor.celular}}</td>
+                    <td>0926443721</td><!--{{proveedor.cedula}}-->
+                    <td>Gomez</td><!--{{proveedor.last_name}}-->
+                    <td>Leonardo</td><!--{{proveedor.first_name}}-->
+                    <td>leonardogp@gmail.com</td><!--{{proveedor.email}}-->
+                    <td>0925334231</td><!--{{proveedor.celular}}-->
                     <td *ngIf="proveedor.is_active">Habilitado </td>
                     <td *ngIf="!proveedor.is_active">Deshabilitado </td>
-                    <td>{{proveedor.rateDriver}}</td>
-                    <td>0</td>
-                    <td><button (click)="detalleProveedor(proveedor)">Ver Detalle</button></td>
+                    <td>4</td><!--{{proveedor.rateDriver}}-->
+                    <td>12,55</td>
+                    <td class="detail-cell"><img class="detail-img" src="./assets/iconos/botonVerDetalle.png" (click)="detalleProveedor(proveedor)"></td>
                 </tr>
             </table>
               
@@ -46,8 +44,7 @@
           <mat-card-content>
             <div class="container">
               <table class="table">
-                <tr>
-                    <th></th>
+                <thead>
                     <th>Cedula</th>
                     <th>Apellido</th>
                     <th>Nombre</th>
@@ -56,9 +53,8 @@
                     <th>Estado</th>
                     <th>Calificación</th>
                     <th>Total $</th>
-                </tr>
+                </thead>
                 <tr *ngFor="let cliente of clientes | filtroproveedor:filtroUsuario">
-                    <td>□</td>
                     <td>{{cliente.cedula}}</td>
                     <td>{{cliente.last_name}}</td>
                     <td>{{cliente.first_name}}</td>
@@ -68,7 +64,7 @@
                     <td *ngIf="!cliente.is_active">Deshabilitado </td>
                     <td>{{cliente.rateDriver}}</td>
                     <td>0</td>
-                    <td><button (click)="detalleProveedor(proveedor)">Ver Detalle</button></td>
+                    <td class="detail-cell"><img class="detail-img" src="./assets/iconos/botonVerDetalle.png" (click)="detalleProveedor(proveedor)"></td>
                 </tr>
             </table>
             </div>
@@ -91,8 +87,7 @@
                   <td>{{servicio.nameTypeService}}</td>
                   <td>{{servicio.descriptionTypeService}}</td>
                   <td>0</td>
-                  <td><button (click)="detalleServicio(servicio)">Ver Detalle</button></td>           
-                  
+                  <td class="detail-cell"><img class="detail-img" src="./assets/iconos/botonVerDetalle.png" (click)="detalleServicio(servicio)"></td>
                 </tr>
               </table>
             </div>

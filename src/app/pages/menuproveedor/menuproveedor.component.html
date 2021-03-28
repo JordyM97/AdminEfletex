@@ -6,12 +6,11 @@
     <div class="input-group md-form form-sm form-2 pl-0">
         <a (click)="openDialog()"><img src="assets/iconos/agregar.png" alt="agregar"  width="35" height="35"></a>
         <input class="form-control my-0 py-1 red-border search" type="text"  name="filtroUsuario" placeholder="Buscar" [(ngModel)]="filtroUsuario">
-        <img class="input-img" src="./assets/iconos/buscar.png">
+        <img class="input-img" src="./assets/iconos/botonLupa.png">
     </div>
 
-    <table>
+    <table id="tabla-proveedor">
         <tr>
-            <th></th>
             <th>Cedula</th>
             <th>Apellido</th>
             <th>Nombre</th>
@@ -21,15 +20,15 @@
             <th>Habilitar/Inhabilitar</th>
         </tr>
         <tr *ngFor="let proveedor of proveedores | filtroproveedor:filtroUsuario">
-            <td>□</td>
-            <td>{{proveedor.cedula}}</td>
-            <td>{{proveedor.last_name}}</td>
-            <td>{{proveedor.first_name}}</td>
-            <td>{{proveedor.email}}</td>
-            <td>{{proveedor.celular}}</td>
+            <td>{{proveedor.cedula}}</td><!--{{proveedor.cedula}}-->
+            <td>{{proveedor.last_name}}</td><!--{{proveedor.last_name}}-->
+            <td>{{proveedor.first_name}}</td><!--{{proveedor.first_name}}-->
+            <td>{{proveedor.email}}</td><!--{{proveedor.email}}-->
+            <td>{{proveedor.celular}}</td><!--{{proveedor.celular}}-->
             <td *ngIf="proveedor.is_active">Habilitado </td>
             <td *ngIf="!proveedor.is_active">Deshabilitado </td>
             <td><mat-slide-toggle checked="{{proveedor.is_active}}" (change)="cambiar(proveedor.id,$event)" ></mat-slide-toggle></td>
         </tr>
     </table>
+    <button (click)="exportexcel()"> Descargar </button>
 </div>

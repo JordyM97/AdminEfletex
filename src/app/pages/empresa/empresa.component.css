@@ -18,10 +18,22 @@ textarea {
     height: 350px;
     margin-top: 14px;
     margin-left: 30px;
+    background-color: #FFFFFF;
+}
+
+table thead th{
+    font-weight: bold;
+    letter-spacing: 0.4px;
+    color: #282F69;
+}
+
+table tr td{
+    letter-spacing: 0.4px;
+    color: #282F69;
 }
 
 .empresa{
-    background-color:  #EDEEF0;
+    background-color: #b9e5fb;
     max-width: 1000px;
     margin-right: 10%;
    
@@ -41,13 +53,13 @@ textarea {
     position:absolute;
     bottom:10px;
     right:15px;
-    width:20px;
+    width:30px;
     height:20px;
     margin-right: 5%;
 }
 
 input{
-    background-color: #D8D9DD;
+    background-color: #3EA3DC;
     border-radius: 5px;
     width: 15px;
 }
@@ -62,7 +74,7 @@ input{
     margin-right: 20px;
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #87868A;
+    color: #FFFFFF;
     opacity: 1; /* Firefox */
     font-size: 12px;
 }
@@ -73,6 +85,16 @@ input{
     letter-spacing: 1px;
     
 }
+
+.edit-img, .delete-img{
+    width:75px;
+    height:38px;
+}
+
+.edit-img:hover, .delete-img:hover{
+    filter: opacity(.8);
+}
+
 
 mat-card{
     margin: 2%;

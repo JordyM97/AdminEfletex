@@ -2,7 +2,18 @@
 <div  class="page-content">
     <div class = "mapa">
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom"> 
-            <agm-marker [latitude]="latVehicle" [longitude]="lngVehicle"></agm-marker> 
+            <agm-marker 
+            [iconUrl] ="
+                {
+                    url:'./assets/iconos/camioneta.png',
+                    scaledSize: {
+                        width: 40,
+                        height: 60
+                    }
+                }"
+            [latitude]="latVehicle" 
+            [longitude]="lngVehicle">
+            </agm-marker> 
         </agm-map>
     </div>
 </div>

@@ -5,6 +5,7 @@ import {FormeditservicioComponent} from '../formeditservicio/formeditservicio.co
 import {FormtarifasComponent} from '../formtarifas/formtarifas.component';
 import {FormedittarifaComponent} from '../formedittarifa/formedittarifa.component';
 import {EmpresaService} from '../../services/empresa.service';
+import { TipoServiciosService } from 'src/app/services/tipo-servicios.service';
 
 @Component({
   selector: 'app-empresa',
@@ -21,17 +22,29 @@ export class EmpresaComponent implements OnInit {
   filtroServicio='';
   filtroTarifa='';
   typeService:any=[];
+  tipoServicios:Array<any>;
 
   constructor(
     private empresaServicio:EmpresaService,
+    private tipoServicioServicio:TipoServiciosService,
     private dialog: MatDialog,
 
-  ) { }
+  ) {
+    this.tipoServicios = []
+   }
 
   ngOnInit(): void {
     this.cargarPolitica();
-    this.obtenerServicios();
     this.obtenerTarifas();
+    this.obtenerTipoServicios();
+  }
+
+  async obtenerTipoServicios(){
+    await this.empresaServicio.getTipoServicios();
+    this.tipoServicios = await this.empresaServicio.getListaTipoServicios();
+    this.tipoServicios.forEach(element => {
+      console.log(element);
+    });
   }
 
   cargarPolitica(){
@@ -90,7 +103,7 @@ export class EmpresaComponent implements OnInit {
     );
   }
 
-  editarFormServicio(servicio:any) {
+  editarFormServicio(tipoServicio:any) {
     const dialogConfig=new MatDialogConfig();
     dialogConfig.disableClose=false;
     dialogConfig.autoFocus=true;
@@ -100,9 +113,9 @@ export class EmpresaComponent implements OnInit {
       {
         width:'35%',
         data:{
-          id:servicio.idTypeService,
-          nameTypeService:servicio.nameTypeService,
-          descriptionTypeService:servicio.descriptionTypeService
+          id:tipoServicio.idTypeService,
+          nameTypeService:tipoServicio.nameTypeService,
+          descriptionTypeService:tipoServicio.descriptionTypeService
         }
       }
     );

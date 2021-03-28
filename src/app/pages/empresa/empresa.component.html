@@ -13,9 +13,9 @@
     <mat-tab label="SERVICIOS">
       
       <div class="input-group md-form form-sm form-2 pl-0">
-        <a (click)="openFormServicio()"><img src="assets/iconos/agregar.png" alt="agregar"  width="35" height="35"></a>
+        <a (click)="openFormServicio()"><img src="assets/iconos/botonAgregar.png" alt="agregar"  width="65" height="35"></a>
         <input class="form-control my-0 py-1 red-border search" type="text"  name="filtroServicio" placeholder="Buscar" [(ngModel)]="filtroServicio">
-        <img class="input-img" src="./assets/iconos/buscar.png">
+        <img class="input-img" src="./assets/iconos/botonLupa.png">
       </div>
       
       <mat-card>
@@ -26,11 +26,11 @@
                 <th>Nombre</th>
                 <th>Descripción</th>
               </thead>
-              <tr *ngFor="let servicio of servicios | filtroservicio:filtroServicio">
-                <td>{{servicio.nameTypeService}}</td>
-                <td>{{servicio.descriptionTypeService}}</td>
-                <td><button class="editar"(click)="editarFormServicio(servicio)">Editar</button></td>
-                <td><button (click)="eliminarServicio(servicio.idTypeService)">Eliminar</button></td>           
+              <tr *ngFor="let tipoServicio of tipoServicios | filtroservicio:filtroServicio">
+                <td>{{tipoServicio.nameTypeService}}</td>
+                <td>{{tipoServicio.descriptionTypeService}}</td>
+                <td><img class="edit-img" src="./assets/iconos/botonEditar.png" (click)="editarFormServicio(tipoServicio)"></td>
+                <td><img class="delete-img" src="./assets/iconos/botonEliminar.png" (click)="eliminarServicio(servicio.idTypeService)"></td>           
               </tr>
             </table>
           </div>
@@ -41,9 +41,9 @@
     <mat-tab label="TARTIFAS">
       
       <div class="input-group md-form form-sm form-2 pl-0">
-        <a (click)="openFormTarifa()"><img src="assets/iconos/agregar.png" alt="agregar"  width="35" height="35"></a>
+        <a (click)="openFormTarifa()"><img src="assets/iconos/botonAgregar.png" alt="agregar"  width="65" height="35"></a>
         <input class="form-control my-0 py-1 red-border search" type="text"  name="filtroTarifa" placeholder="Buscar" [(ngModel)]="filtroTarifa">
-        <img class="input-img" src="./assets/iconos/buscar.png">
+        <img class="input-img" src="./assets/iconos/botonLupa.png">
       </div>
       <mat-card>
         <mat-card-content>
@@ -62,8 +62,8 @@
                 <td>{{tarifa.minFare}}</td>
                 <td>{{tarifa.maxFare}}</td>
                 <td>{{tarifa.priceFare}}</td>
-                <td><button class="editar" (click)="editarFormTarifa(tarifa)">Editar</button></td>
-                <td><button (click)="eliminarTarifa(tarifa.idFare)">Eliminar</button></td>           
+                <td><img class="edit-img" src="./assets/iconos/botonEditar.png" (click)="editarFormTarifa(tarifa)"></td>
+                <td><img class="delete-img" src="./assets/iconos/botonEliminar.png" (click)="eliminarTarifa(tarifa.idFare)"></td>           
               </tr>
             </table>
           </div>

@@ -5,7 +5,7 @@
 
     <div class="input-group md-form form-sm form-2 pl-0">
         <a (click)="openDialog()"><img src="assets/iconos/agregar.png" alt="agregar"  width="35" height="35"></a>
-        <input class="form-control my-0 py-1 red-border search" type="text"  name="filtroUsuario" placeholder="Buscar" [(ngModel)]="filtroUsuario">
+        <input class="form-control my-0 py-1 red-border search" type="text"  name="filtroProveedor" placeholder="Buscar" [(ngModel)]="filtroProveedor">
         <img class="input-img" src="./assets/iconos/botonLupa.png">
     </div>
 
@@ -19,16 +19,21 @@
             <th>Estado</th>
             <th>Habilitar/Inhabilitar</th>
         </tr>
-        <tr *ngFor="let proveedor of proveedores | filtroproveedor:filtroUsuario">
-            <td>{{proveedor.cedula}}</td><!--{{proveedor.cedula}}-->
-            <td>{{proveedor.last_name}}</td><!--{{proveedor.last_name}}-->
-            <td>{{proveedor.first_name}}</td><!--{{proveedor.first_name}}-->
-            <td>{{proveedor.email}}</td><!--{{proveedor.email}}-->
-            <td>{{proveedor.celular}}</td><!--{{proveedor.celular}}-->
-            <td *ngIf="proveedor.is_active">Habilitado </td>
-            <td *ngIf="!proveedor.is_active">Deshabilitado </td>
-            <td><mat-slide-toggle checked="{{proveedor.is_active}}" (change)="cambiar(proveedor.id,$event)" ></mat-slide-toggle></td>
+        <tr *ngFor="let proveedor of proveedores | filtroproveedor: filtroProveedor">
+            <td>{{proveedor.userDriver.cedula}}</td><!--{{proveedor.cedula}}-->
+            <td>{{proveedor.userDriver.last_name}}</td><!--{{proveedor.last_name}}-->
+            <td>{{proveedor.userDriver.first_name}}</td><!--{{proveedor.first_name}}-->
+            <td>{{proveedor.userDriver.email}}</td><!--{{proveedor.email}}-->
+            <td>{{proveedor.userDriver.celular}}</td><!--{{proveedor.celular}}-->
+            <td *ngIf="proveedor.userDriver.is_active">Habilitado </td>
+            <td *ngIf="!proveedor.userDriver.is_active">Deshabilitado </td>
+            <td><mat-slide-toggle 
+                checked="{{proveedor.userDriver.is_active}}" 
+                (change)="cambiarEstado(proveedor.userDriver.is_active,proveedor.userDriver.id)" >
+            </mat-slide-toggle></td>
         </tr>
     </table>
-    <button (click)="exportexcel()"> Descargar </button>
+    <div class="containerDownload">
+        <img class="btn-download" src="assets/iconos/botonDescargar.png" (click)="exportexcel()" alt="btn1">
+    </div>
 </div>

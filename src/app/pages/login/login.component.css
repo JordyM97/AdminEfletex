@@ -1,4 +1,3 @@
-
 .img-bg{
     background-size: cover;
     height: 100%;
@@ -11,10 +10,17 @@
     padding: 8%;
 }
 
+.img-logo{
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 100%;
+}
+
 
 .card{
-    width: 500px;
-    
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 button{
@@ -29,4 +35,8 @@ button:hover{
 
 input{
     border-bottom: 1px solid black;
+}
+
+.btn-block:hover{
+    cursor: pointer;
 }

@@ -35,13 +35,13 @@ export class FormeditservicioComponent implements OnInit {
     });
   }
 
-  edit(event: Event) {
+  async edit(event: Event) {
     event.preventDefault();
     if(this.firstFormGroup.valid){
       this.servicio=this.firstFormGroup.value;
       console.log(this.servicio)
-      this.empresaService.putTipoServicios(this.servicio,this.data.id)
-      window.location.reload();
+      await this.empresaService.putTipoServicios(this.servicio,this.data.id)
+      window.location.reload(); /*Para recargar la pagina*/
     }
   }
 

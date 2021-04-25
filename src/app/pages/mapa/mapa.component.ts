@@ -14,6 +14,8 @@ import { Position } from '@angular/compiler';
 export class MapaComponent implements OnInit {
 
   PositionD: Observable<any>;
+  PositionA: Observable<any[]>;
+  positionAll: AngularFirestoreCollection<any>;
   markerD=null;
   lat:any;
   lng:any;
@@ -37,7 +39,10 @@ export class MapaComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.watchDriverPos(1);
+    this.positionAll= this.firestore.collection('posicion')
+    this.PositionA = this.positionAll.valueChanges();
+    console.log(this.PositionA)
+    this.watchDriverPos(6);
   }
 
   watchDriverPos(id: any){

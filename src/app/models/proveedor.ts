@@ -16,3 +16,11 @@ export interface Proveedor{
     userDriver:string,
     companyDriver:string
 }
+
+export interface first_register{
+    nameDriver:string,
+    lnameDriver:string,
+    emailDriver:string,
+    ciDriver:string,
+    phoneDriver:string,
+}

@@ -1,0 +1,26 @@
+thead, tbody { display: block; }
+
+tbody {
+    height: 262px;       /* Just for the demo          */
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: auto;  /* Hide the horizontal scroll */
+}
+
+table {
+    width: 100%; /* Optional */
+}
+
+.tabla-cliente thead tr th{
+   width: 192px !important;
+   margin-top: 2%;
+}
+
+.tabla-cliente tbody tr td{
+   padding-top: 2.2% !important;
+   padding-bottom: 2.2% !important;
+   width: 12% !important;
+}
+
+.tabla-cliente{
+    letter-spacing: 0.4px;
+}

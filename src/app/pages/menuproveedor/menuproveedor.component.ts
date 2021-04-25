@@ -13,7 +13,7 @@ import * as XLSX from 'xlsx';
 export class MenuproveedorComponent implements OnInit {
   proveedores:Array<any>;
   isChecked = true;
-  filtroUsuario='';
+  filtroProveedor='';
   fileName= 'ExcelSheetProveedores.xlsx';  
 
   constructor(
@@ -28,11 +28,11 @@ export class MenuproveedorComponent implements OnInit {
   }
 
   async obtenerProveedores(){
-    await this.proveedorServicio.getProveedores();
-    this.proveedores = await this.proveedorServicio.getListaProveedores();
-    this.proveedores.forEach(element => {
-      console.log(element);
-    });
+    let params: any = {}
+    this.proveedorServicio.getProveedores(params).subscribe((data: any) =>{
+      this.proveedores = data
+      console.log(this.proveedores)
+    })
   }
   
   openDialog() {
@@ -48,9 +48,21 @@ export class MenuproveedorComponent implements OnInit {
     });
   }
 
-  cambiar(id:string){
-    console.log("el id es "+id);
-  }
+  cambiarEstado(estado,id) {
+    console.log(estado, id);
+    let cambioEstado = {
+      is_active:!estado
+    };
+    this.proveedorServicio.putProveedor(id,cambioEstado).subscribe((data:any) =>{
+      console.log(data)
+    })
+    setTimeout(() => {
+      window.location.reload(); /*Para recargar la pagina*/
+    }, 100);
+
+    //this.clienteServicio.putCliente(id,cambioEstado)
+    
+}
 
   exportexcel(): void{
       /* table id is passed over here */   

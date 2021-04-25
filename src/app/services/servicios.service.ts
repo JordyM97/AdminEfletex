@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,24 +12,19 @@ export class ServiciosService {
 
   constructor(
     private http:HttpClient,
+    private apiService: ApiService,
   ) { }
 
-  //Método para obtener todos los Clientes registrados
-  getServicios(){
-    this.servicios=[]
-    return new Promise((resolve, reject) => {
-      let headers = new HttpHeaders();
-      headers = headers.set('Authorization', 'token '+String(localStorage.getItem("token")));
-      this.http.get(`${this.API_URL}/service/`, {headers: headers}).subscribe(res => {
-        let data = JSON.parse(JSON.stringify(res));
-        console.log(data)
-        data.forEach(element => {
-          this.servicios.push(element)
-        });
-        resolve("ok");
-        },(err) => {
-        resolve("bad");
-        });});
+  URL_SERVICE = 'service'
+
+  //Método para obtener todos los Servicios registrados
+
+  getServicios(params) {
+    return this.apiService.ApiCall(
+      `${this.URL_SERVICE}/`,
+      "GET",
+      params
+    );
   }
 
   getListaServicios(){

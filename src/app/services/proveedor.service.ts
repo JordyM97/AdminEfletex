@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Proveedor} from '../models/proveedor';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,28 +9,43 @@ import {Proveedor} from '../models/proveedor';
 export class ProveedorService {
     API_URI='https://ctvehicular.pythonanywhere.com/api';
     API_URL='https://axela.pythonanywhere.com/api';
+    URL_CONDUCTOR = 'driver';
+    URL_USER = 'user';
+
     proveedores: Array<any>;
+    proveedor: any;
+
     constructor(
-    private http:HttpClient
+    private http:HttpClient,
+    private apiService: ApiService
   ) { }
 
-
-  //Método para obtener todos los Clientes registrados
-  getProveedores(){
-    this.proveedores=[]
-    return new Promise((resolve, reject) => {
-      let headers = new HttpHeaders();
-      headers = headers.set('Authorization', 'token '+String(localStorage.getItem("token")));
-      this.http.get(`${this.API_URL}/driver/`, {headers: headers}).subscribe(res => {
-        let data = JSON.parse(JSON.stringify(res));
-        data.forEach(element => {
-          this.proveedores.push(element.userDriver)
-        });
-        resolve("ok");
-        },(err) => {
-        resolve("bad");
-        });});
-  }
+    //Método para obtener todos los Clientes registrados
+    getProveedores(params) {
+      return this.apiService.ApiCall(
+        `${this.URL_CONDUCTOR}/`,
+        "GET",
+        params
+      );
+    }
+  
+    //METODO PARA PEDIR AL BACKEND SOLO UN CLIENTE REGISTRADO
+    getProveedor(params) {
+      return this.apiService.ApiCall(
+        `${this.URL_CONDUCTOR}/`,
+        "GET",
+        params
+      );
+    }
+  
+    //Método para habilitar/deshabilitar a un cliente
+    putProveedor(id,params){
+      return this.apiService.ApiCall(
+        `${this.URL_USER}/update/admin/${id}/`,
+        "PUT",
+        params
+      );
+    }
 
   //Método para obtener la información de  los cliente registrados
   /*getDriversInformacion(id:any){
@@ -49,9 +65,8 @@ export class ProveedorService {
     return this.proveedores;
   }
 
-  //METODO PARA PEDIR AL BACKEND SOLO UN PROVEEDOR REGISTRADO
-  getProveedor(id:String){
-    return this.http.get(`${this.API_URI}/driver/${id}/`);
+  getInformacionProveedor(){
+    return this.proveedor;
   }
 
   //METODO PARA ENVIAR UN PROVEEDOR AL BACKEND Y REGISTRARLO

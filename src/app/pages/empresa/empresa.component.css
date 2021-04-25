@@ -36,8 +36,6 @@ table tr td{
     background-color: #b9e5fb;
     max-width: 1000px;
     margin-right: 10%;
-   
-    
 }
 
 
@@ -85,16 +83,6 @@ input{
     letter-spacing: 1px;
     
 }
-
-.edit-img, .delete-img{
-    width:75px;
-    height:38px;
-}
-
-.edit-img:hover, .delete-img:hover{
-    filter: opacity(.8);
-}
-
 
 mat-card{
     margin: 2%;

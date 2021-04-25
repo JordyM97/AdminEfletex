@@ -23,6 +23,7 @@ export class EmpresaComponent implements OnInit {
   filtroTarifa='';
   typeService:any=[];
   tipoServicios:Array<any>;
+  tarifaServicios:Array<any>;
 
   constructor(
     private empresaServicio:EmpresaService,
@@ -31,18 +32,31 @@ export class EmpresaComponent implements OnInit {
 
   ) {
     this.tipoServicios = []
+    this.tarifaServicios = []
    }
 
   ngOnInit(): void {
     this.cargarPolitica();
     this.obtenerTarifas();
-    this.obtenerTipoServicios();
+    //this.obtenerTipoServicios();
+    this.obtenerTarifaServicios();
   }
 
-  async obtenerTipoServicios(){
+  /*async obtenerTipoServicios(){
     await this.empresaServicio.getTipoServicios();
     this.tipoServicios = await this.empresaServicio.getListaTipoServicios();
     this.tipoServicios.forEach(element => {
+      console.log(element);
+    });
+  }*/
+
+  async obtenerTarifaServicios(){
+    await this.empresaServicio.getTarifaServicios();
+    this.tarifaServicios = await this.empresaServicio.getListaTarifaServicios();
+    this.tipoServicios.forEach(element => {
+      console.log(element);
+    });
+    this.tarifaServicios.forEach(element => {
       console.log(element);
     });
   }

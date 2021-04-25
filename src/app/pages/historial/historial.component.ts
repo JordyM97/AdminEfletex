@@ -4,6 +4,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
 import { ServiciosService } from 'src/app/services/servicios.service';
 import {EmpresaService} from '../../services/empresa.service';
 import {ProveedorService} from '../../services/proveedor.service';
+import { HistorialclienteComponent } from '../historialcliente/historialcliente.component';
 import {HistorialproveedorComponent} from '../historialproveedor/historialproveedor.component';
 import {HistorialservicioComponent} from '../historialservicio/historialservicio.component';
 
@@ -15,6 +16,7 @@ import {HistorialservicioComponent} from '../historialservicio/historialservicio
 export class HistorialComponent implements OnInit {
   clientes:Array<any>;
   proveedores:Array<any>;
+  tipoServicios = []
   servicios:any=[];
   filtroServicio='';
   filtroUsuario='';
@@ -28,16 +30,18 @@ export class HistorialComponent implements OnInit {
   ) { 
     this.proveedores = []
     this.clientes = []
+    this.tipoServicios = []
    }
 
   ngOnInit(): void {
+    this.obtenerServicios();
+    this.obtenerTiposServicios();
     this.obtenerProveedores();
     this.obtenerClientes();
-    this.obtenerServicios();
-    this.cargarServicios();
+    //this.cargarServicios();
   }
 
-  async obtenerProveedores(){
+  /*async obtenerProveedores(){
     await this.proveedorServicio.getProveedores();
     this.proveedores = await this.proveedorServicio.getListaProveedores();
     this.proveedores.forEach(element => {
@@ -46,24 +50,73 @@ export class HistorialComponent implements OnInit {
     console.log(this.proveedores)
   }
 
-  async obtenerClientes(){
-    await this.clienteServicio.getClientes();
-    this.clientes = await this.clienteServicio.getListaClientes();
-    this.clientes.forEach(element => {
-      console.log(element);
+  async obtenerTipoServicios(){
+    await this.empresaServicio.getTipoServicios();
+    this.tipoServicios = await this.empresaServicio.getListaTipoServicios();
+    this.tipoServicios.forEach(element => {
+      //console.log(element);
     });
   }
 
   async obtenerServicios(){
     await this.serviciosServicio.getServicios();
+  }*/
+
+  async obtenerProveedores(){
+    let params: any = {}
+    this.proveedorServicio.getProveedores(params).subscribe((data: any) =>{
+      console.log(data)
+      this.proveedores = data
+    })
   }
 
-  cargarServicios(){
+  obtenerClientes(){
+    let params: any = {}
+    this.clienteServicio.getClientes(params).subscribe((data: any) =>{
+      console.log(data)
+      this.clientes = data
+    })
+  }
+
+  obtenerServicios(){
+    let params: any = {}
+    this.serviciosServicio.getServicios(params).subscribe((data: any) =>{
+      console.log(data)
+      //this.tipoServicios = data;
+    })
+  }
+
+  obtenerTiposServicios(){
+    let params: any = {}
+    this.empresaServicio.getTipoServicios(params).subscribe((data: any) =>{
+      this.tipoServicios = data;
+    })
+  }
+
+  /*cargarServicios(){
     this.empresaServicio.getServicios().subscribe(
       res=>{this.servicios=res},
         err=>console.log(err)
       )
+  }*/
+
+  detalleCliente(cliente:any){
+    const dialogConfig=new MatDialogConfig();
+    dialogConfig.disableClose=false;
+    dialogConfig.autoFocus=true;
+    dialogConfig.height='100%';
+    dialogConfig.width='100%';
+    const dialogRef =  this.dialog.open(HistorialclienteComponent,
+      {
+        width:'100%',
+        data: cliente
+      }
+    );
+    dialogRef.afterClosed().subscribe(result => {
+      //this.cargarServicios();
+    });
   }
+
   detalleProveedor(proveedor:any){
     const dialogConfig=new MatDialogConfig();
     dialogConfig.disableClose=false;
@@ -92,7 +145,7 @@ export class HistorialComponent implements OnInit {
       }
     );
     dialogRef.afterClosed().subscribe(result => {
-      this.cargarServicios();
+      //this.cargarServicios();
     });
   }
 
@@ -113,7 +166,7 @@ export class HistorialComponent implements OnInit {
       }
     );
     dialogRef.afterClosed().subscribe(result => {
-      this.cargarServicios();
+      //this.cargarServicios();
     });
   }
 

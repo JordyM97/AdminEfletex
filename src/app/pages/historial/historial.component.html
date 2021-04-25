@@ -19,17 +19,19 @@
                     <th>Calificación</th>
                     <th>Total $</th>
                 </thead>
-                <tr *ngFor="let proveedor of proveedores | filtroproveedor:filtroUsuario">
-                    <td>0926443721</td><!--{{proveedor.cedula}}-->
-                    <td>Gomez</td><!--{{proveedor.last_name}}-->
-                    <td>Leonardo</td><!--{{proveedor.first_name}}-->
-                    <td>leonardogp@gmail.com</td><!--{{proveedor.email}}-->
-                    <td>0925334231</td><!--{{proveedor.celular}}-->
-                    <td *ngIf="proveedor.is_active">Habilitado </td>
-                    <td *ngIf="!proveedor.is_active">Deshabilitado </td>
+                <tr *ngFor="let proveedor of proveedores | filtrousuario:filtroUsuario">
+                    <td>{{proveedor.userDriver.cedula}}</td><!--{{proveedor.cedula}}-->
+                    <td>{{proveedor.userDriver.last_name}}</td><!--{{proveedor.last_name}}-->
+                    <td>{{proveedor.userDriver.first_name}}</td><!--{{proveedor.first_name}}-->
+                    <td>{{proveedor.userDriver.email}}</td><!--{{proveedor.email}}-->
+                    <td>{{proveedor.userDriver.celular}}</td><!--{{proveedor.celular}}-->
+                    <td *ngIf="proveedor.userDriver.is_active">Habilitado </td>
+                    <td *ngIf="!proveedor.userDriver.is_active">Deshabilitado </td>
                     <td>4</td><!--{{proveedor.rateDriver}}-->
                     <td>12,55</td>
-                    <td class="detail-cell"><img class="detail-img" src="./assets/iconos/botonVerDetalle.png" (click)="detalleProveedor(proveedor)"></td>
+                    <td class="detail-cell">
+                      <img class="btn-detail" src="assets/iconos/botonVerDetalle.png" (click)="detalleProveedor(proveedor)">
+                    </td>
                 </tr>
             </table>
               
@@ -54,17 +56,22 @@
                     <th>Calificación</th>
                     <th>Total $</th>
                 </thead>
-                <tr *ngFor="let cliente of clientes | filtroproveedor:filtroUsuario">
-                    <td>{{cliente.cedula}}</td>
-                    <td>{{cliente.last_name}}</td>
-                    <td>{{cliente.first_name}}</td>
-                    <td>{{cliente.email}}</td>
-                    <td>{{cliente.celular}}</td>
-                    <td *ngIf="cliente.is_active">Habilitado </td>
-                    <td *ngIf="!cliente.is_active">Deshabilitado </td>
+                <tr *ngFor="let cliente of clientes | filtrousuario:filtroUsuario">
+                    <td>{{cliente.userClient.cedula}}</td>
+                    <td>{{cliente.userClient.last_name}}</td>
+                    <td>{{cliente.userClient.first_name}}</td>
+                    <td>{{cliente.userClient.email}}</td>
+                    <td>{{cliente.userClient.celular}}</td>
+                    <td *ngIf="cliente.userClient.is_active">Habilitado </td>
+                    <td *ngIf="!cliente.userClient.is_active">Deshabilitado </td>
                     <td>{{cliente.rateDriver}}</td>
                     <td>0</td>
-                    <td class="detail-cell"><img class="detail-img" src="./assets/iconos/botonVerDetalle.png" (click)="detalleProveedor(proveedor)"></td>
+                    <td class="detail-cell">
+                      <img 
+                        class="btn-detail" 
+                        src="assets/iconos/botonVerDetalle.png" 
+                        (click)="detalleCliente(cliente)">
+                    </td>
                 </tr>
             </table>
             </div>
@@ -83,12 +90,16 @@
                   <th>Descripción</th>
                   <th>Total $</th>
                 </thead>
-                <tr *ngFor="let servicio of servicios | filtroservicio:filtroServicio">
-                  <td>{{servicio.nameTypeService}}</td>
-                  <td>{{servicio.descriptionTypeService}}</td>
-                  <td>0</td>
-                  <td class="detail-cell"><img class="detail-img" src="./assets/iconos/botonVerDetalle.png" (click)="detalleServicio(servicio)"></td>
-                </tr>
+                <tbody>
+                  <tr *ngFor="let tipoServicio of tipoServicios | filtroservicio:filtroServicio">
+                    <td>{{tipoServicio.nameTypeService}}</td>
+                    <td>{{tipoServicio.descriptionTypeService}}</td>
+                    <td>0</td>
+                    <td class="detail-cell">
+                      <img class="btn-detail" src="assets/iconos/botonVerDetalle.png" (click)="detalleServicio(tipoServicio)">
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </mat-card-content>

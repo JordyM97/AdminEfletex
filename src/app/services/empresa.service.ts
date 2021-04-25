@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Empresa} from '../models/empresa';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { ApiService } from './api.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,32 +9,27 @@ export class EmpresaService {
   API_URI='https://ctvehicular.pythonanywhere.com/api';
   API_URI_SV = 'http://ctvehicular.pythonanywhere.com/api/history/service';
   API_URL='https://axela.pythonanywhere.com/api';
+
+  URL_TIPO_SERVICIO = 'typeservice'
   servicios: Array<any>;
   tipoServicio: Array<any>;
+  tarifaServicio: Array<any>;
 
   constructor(
-    private http:HttpClient
+    private http:HttpClient,
+    private apiService: ApiService
   ) { }
 
-  //Método para obtener todos los Clientes registrados
-  getTipoServicios(){
-    this.tipoServicio=[]
-    return new Promise((resolve, reject) => {
-      let headers = new HttpHeaders();
-      headers = headers.set('Authorization', 'token '+String(localStorage.getItem("token")));
-      this.http.get(`${this.API_URL}/typeservice/`, {headers: headers}).subscribe(res => {
-        let data = JSON.parse(JSON.stringify(res));
-        console.log(data)
-        data.forEach(element => {
-          this.tipoServicio.push(element)
-        });
-        resolve("ok");
-        },(err) => {
-        resolve("bad");
-        });});
+  //Método para obtener todos los tipos de servicios
+  getTipoServicios(params) {
+    return this.apiService.ApiCall(
+      `${this.URL_TIPO_SERVICIO}/`,
+      "GET",
+      params
+    );
   }
 
-  //Método para obtener todos los Clientes registrados
+  //Método para actualizar todos los tipos de servicios
   putTipoServicios(informacionModificar, id){
     this.tipoServicio=[]
     return new Promise((resolve, reject) => {
@@ -48,8 +44,30 @@ export class EmpresaService {
         });});
   }
 
+  //Método para obtener todos los tipos de servicios
+  getTarifaServicios(){
+    this.tarifaServicio=[]
+    return new Promise((resolve, reject) => {
+      let headers = new HttpHeaders();
+      headers = headers.set('Authorization', 'token '+String(localStorage.getItem("token")));
+      this.http.get(`${this.API_URL}/fare/`, {headers: headers}).subscribe(res => {
+        let data = JSON.parse(JSON.stringify(res));
+        console.log(data)
+        data.forEach(element => {
+          this.tarifaServicio.push(element)
+        });
+        resolve("ok");
+        },(err) => {
+        resolve("bad");
+        });});
+  }
+
   getListaTipoServicios(){
     return this.tipoServicio;
+  }
+
+  getListaTarifaServicios(){
+    return this.tarifaServicio;
   }
 
   //METODO PARA PEDIR AL BACKEND LA POLITICA DE LA EMPRESA

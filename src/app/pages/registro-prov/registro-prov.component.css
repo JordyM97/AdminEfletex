@@ -9,6 +9,11 @@
 
     
 }
+
+.btn-enviar{
+    margin-left: 100px;
+}
+
 #logo{
     height: 4em;    
     display: inline;
@@ -113,3 +118,27 @@ input{
     background: transparent;
 
 }
+
+button {
+    background-color: #282F69; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+mat-form-field{
+    width: 75%;
+    padding-bottom: 12px !important;
+}
+
+mat-select, input{
+    margin-top: 5%;
+}
+
+::ng-deep .mat-form-field-wrapper{
+    margin-bottom: -1.25em;
+ }

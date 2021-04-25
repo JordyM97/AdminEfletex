@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {MenuproveedorComponent} from './pages/menuproveedor/menuproveedor.component';
-import {MenuusuarioComponent} from './pages/menuusuario/menuusuario.component';
+import {MenuClienteComponent} from './pages/menuCliente/menuCliente.component';
 import {EmpresaComponent} from './pages/empresa/empresa.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
@@ -41,7 +41,7 @@ const routes: Routes = [
   },
   {
     path:'usuarios',
-    component:MenuusuarioComponent,
+    component:MenuClienteComponent,
     canActivate: [AuthGuard],
   },
   {

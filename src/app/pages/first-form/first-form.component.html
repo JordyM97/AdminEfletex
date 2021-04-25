@@ -1,0 +1,41 @@
+<h1>AGREGAR PROVEEDOR</h1>
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup" >
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Información del proveedor</ng-template>
+      <div class="izquierda">
+        <div class="container">
+          <h5>Nombres</h5>
+          <mat-form-field appearance="legacy">
+           <input matInput type="text" formControlName="nameDriver" required>
+          </mat-form-field>
+        </div>
+        <div class="container">
+          <h5>Apellidos</h5>
+          <mat-form-field appearance="legacy">
+          <input matInput type="text" id="cedula" formControlName="lnameDriver" required> 
+          </mat-form-field>
+        </div>
+       <div class="container">
+        <h5>Email</h5>
+          <mat-form-field appearance="legacy">
+            <input matInput type="text" formControlName="emailDriver" required> 
+          </mat-form-field>
+        </div>
+        <div class="container">
+          <h5>Cédula de identidad</h5>
+          <mat-form-field appearance="legacy">
+            <input matInput type="text" formControlName="ciDriver" required> 
+          </mat-form-field>
+        </div>
+        <div class="container">
+          <h5>Teléfono</h5>
+          <mat-form-field appearance="legacy">
+            <input matInput id="myDate" type="date" formControlName="phoneDriver" required/>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>

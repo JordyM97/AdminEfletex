@@ -1,0 +1,54 @@
+*{
+    font-family: sans-serif;
+}
+
+h1{
+    font-weight: bold;
+}
+
+
+mat-form-field.mat-form-field {
+    font-size: 8px;
+}
+
+mat-form-field .mat-select {
+    font-size: 12px;
+}
+
+form{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px
+}
+
+form div div{
+    grid-column: 1 / 2;
+}
+
+.derecha{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+button{
+    background-color: #E5242F;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    margin:10px;
+}
+
+h5{
+    margin-bottom:2px;
+    margin-left: 8px;
+    color: #87868A;
+    font-weight:500;
+}
+
+input{
+    font-size: 12px;
+}
+
+.getFile{
+    background-color: #f5f5f5;
+}

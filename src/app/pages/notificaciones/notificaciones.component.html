@@ -6,7 +6,7 @@
             <table class="table">
                 <tr>
                     <td><h2>Destinatario </h2></td>
-                    <td><mat-form-field appearance="fill">
+                    <td><mat-form-field>
                         <mat-select  formControlName="destinatarioNotificacion" required>
                             <mat-option value="clientes">Clientes</mat-option>
                             <mat-option value="proveedores">Proveedores</mat-option>
@@ -15,14 +15,24 @@
                 </tr>
                 <tr>
                     <td><h2>Título </h2></td>
-                    <td><mat-form-field appearance="fill">
-                        <input matInput type="text" formControlName="tituloNotificacion" required> 
+                    <td><mat-form-field>
+                        <input matInput 
+                        type="text"
+                        formControlName="tituloNotificacion" 
+                        required> 
                     </mat-form-field></td>
                 </tr>
                 <tr>
                     <td><h2>Descripción </h2></td>
-                    <td><mat-form-field appearance="fill">
-                        <textarea matInput type="text" formControlName="descripcionNotificacion" required cdkTextareaAutosize #autosize="cdkTextareaAutosize"></textarea>
+                    <td><mat-form-field>
+                        <textarea matInput 
+                        rows="5" 
+                        cols="40"
+                        type="text" 
+                        formControlName="descripcionNotificacion" 
+                        required cdkTextareaAutosize 
+                        #autosize="cdkTextareaAutosize">
+                        </textarea>
                     </mat-form-field></td> 
                 </tr>
                 <tr>

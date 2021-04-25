@@ -21,7 +21,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {HttpClientModule} from '@angular/common/http';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import{ProveedorService} from './services/proveedor.service';
-import { MenuusuarioComponent } from './pages/menuusuario/menuusuario.component';
+import { MenuClienteComponent } from './pages/menuCliente/menuCliente.component';
 import { EmpresaComponent } from './pages/empresa/empresa.component';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
@@ -65,6 +65,8 @@ import { FormempresaComponent } from './pages/formempresa/formempresa.component'
 import { HighchartsChartModule } from 'highcharts-angular';
 import { AgmCoreModule } from '@agm/core';
 import { NotificacionEnviadaComponent } from './pages/notificacion-enviada/notificacion-enviada.component';
+import { FirstFormComponent } from './pages/first-form/first-form.component';
+import { ModalEnvioExitosoComponent } from './pages/modal-envio-exitoso/modal-envio-exitoso.component';
 
 
 @NgModule({
@@ -74,7 +76,7 @@ import { NotificacionEnviadaComponent } from './pages/notificacion-enviada/notif
     FormservicioComponent,
     MenuComponent,
     MenuproveedorComponent,
-    MenuusuarioComponent,
+    MenuClienteComponent,
     EmpresaComponent,
     ChatComponent,
     LoginComponent,
@@ -103,6 +105,8 @@ import { NotificacionEnviadaComponent } from './pages/notificacion-enviada/notif
     PeticionesComponent,
     NotificacionesComponent,
     NotificacionEnviadaComponent,
+    FirstFormComponent,
+    ModalEnvioExitosoComponent,
   ],
   imports: [
     BrowserModule,

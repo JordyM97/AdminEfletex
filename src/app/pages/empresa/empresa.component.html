@@ -29,8 +29,12 @@
               <tr *ngFor="let tipoServicio of tipoServicios | filtroservicio:filtroServicio">
                 <td>{{tipoServicio.nameTypeService}}</td>
                 <td>{{tipoServicio.descriptionTypeService}}</td>
-                <td><img class="edit-img" src="./assets/iconos/botonEditar.png" (click)="editarFormServicio(tipoServicio)"></td>
-                <td><img class="delete-img" src="./assets/iconos/botonEliminar.png" (click)="eliminarServicio(servicio.idTypeService)"></td>           
+                <td>
+                  <img class="btn-edit" src="./assets/iconos/botonEditar.png" (click)="editarFormServicio(tipoServicio)">
+                </td>
+                <td>
+                  <img class="btn-delete" src="./assets/iconos/botonEliminar.png" (click)="eliminarServicio(servicio.idTypeService)">
+                </td>           
               </tr>
             </table>
           </div>
@@ -53,17 +57,19 @@
                 <th>Tarifa</th>
                 <th>Servicio</th>
                 <th>Min KM</th>
-                <th>Max KM</th>
                 <th>Precio/KM</th>
               </thead>
-              <tr *ngFor="let tarifa of tarifas | filtrotarifa:filtroTarifa">
+              <tr *ngFor="let tarifa of tarifaServicios | filtrotarifa:filtroTarifa">
                 <td>{{tarifa.nameFare}}</td>
-                <td>{{tarifa.nameService}}</td>
+                <td>{{tarifa.idTypeServiceFare}}</td>
                 <td>{{tarifa.minFare}}</td>
-                <td>{{tarifa.maxFare}}</td>
                 <td>{{tarifa.priceFare}}</td>
-                <td><img class="edit-img" src="./assets/iconos/botonEditar.png" (click)="editarFormTarifa(tarifa)"></td>
-                <td><img class="delete-img" src="./assets/iconos/botonEliminar.png" (click)="eliminarTarifa(tarifa.idFare)"></td>           
+                <td>
+                  <img class="btn-edit" src="assets/iconos/botonEditar.png" (click)="editarFormTarifa(tarifa)">
+                </td>
+                <td>
+                  <img class="btn-delete" src="assets/iconos/botonEliminar.png" (click)="eliminarTarifa(tarifa.idFare)">
+                </td>           
               </tr>
             </table>
           </div>

@@ -1,1 +1,61 @@
-<p>historialcliente works!</p>
+<h1>Historial Cliente</h1>
+<form [formGroup]="firstFormGroup" >
+    <div class="container">
+        <table class="table">
+            <tr>
+                <td><h5>Id </h5></td>
+                <td><input readonly="true" type="text" formControlName="idCliente"></td> 
+                <td><h5>Cédula </h5></td>
+                <td><input readonly="true" type="text" formControlName="cedulaCliente"></td>                
+            </tr>
+            <tr>
+                <td><h5>Nombre </h5></td>
+                <td><input readonly="true" type="text" formControlName="nombreCliente"></td> 
+                <td><h5>Apellido </h5></td>
+                <td><input readonly="true" type="text" formControlName="apelligoCliente"></td> 
+            </tr>
+            <tr>
+                <td><h5>Correo </h5></td>
+                <td><input readonly="true" type="text" formControlName="emailCliente"></td> 
+                <td><h5>Rate </h5></td>
+                <td><input readonly="true" type="text" formControlName="calificacionCliente"></td> 
+            </tr>
+            
+        </table>
+    </div>    
+    <h3>Servicios recibidos del cliente</h3>    
+    <div class="container-body-table">        
+        <table class="tabla-cliente">
+					<thead>
+						<tr>
+							<th>Fecha</th>
+							<th>id</th>
+							<th>Cliente</th> 
+							<th>Punto de partida</th>               
+							<th>Punto de llegada</th>
+							<th>Valor</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let servicio of servicios">
+							<td>{{servicio.startDate |  date:'M/d/yy, h:mm a'}}</td>
+							<td>{{servicio.idService}}</td>
+							<td>
+								{{servicio.idClientService.userClient.first_name}}
+								{{servicio.idClientService.userClient.last_name}}
+							</td>   
+							<td>{{servicio.endAddress}}</td>
+							<td>{{servicio.startAddress}}</td>
+							<td>{{servicio.amountPayment}}</td>                         
+						</tr>
+					</tbody>
+        </table>
+    </div>
+        
+ 		<div class="containerDownload">
+        <img class="btn-download" src="assets/iconos/botonDescargar.png" (click)="exportexcel()" alt="btn1">
+    </div>
+    <div class="row">
+        <button class="btn-cancelar" [mat-dialog-close]="true">Cancelar</button>
+    </div>
+</form>

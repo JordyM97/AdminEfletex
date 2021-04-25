@@ -36,3 +36,33 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
   background-color: #fff;
 }
+
+td, thead, th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.containerDownload{
+  margin-top: 3%;
+  margin-left: 4%;
+}
+
+.btn-edit, .btn-delete{
+  width:75px;
+  height:38px;
+}
+
+.btn-download{
+  width: 145px;
+  height: 77px;
+}
+
+.btn-detail{
+  width:115px;
+  height:60px;
+}
+
+.btn-download:hover, .btn-edit:hover, .btn-delete:hover, .btn-detail:hover{
+  filter: opacity(.8);
+  cursor: pointer;
+}

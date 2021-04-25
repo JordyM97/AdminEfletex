@@ -79,15 +79,6 @@ input{
     letter-spacing: 1px;
 }
 
-.detail-img{
-    width:90px;
-    height:50px;
-}
-
-.detail-img:hover{
-    filter: opacity(.8);
-}
-
 .detail-cell{
     padding: 0px;
 }

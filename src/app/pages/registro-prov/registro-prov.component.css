@@ -37,7 +37,7 @@
     color:#3a90c4;
     font-weight: bold;
     margin-top: 2em;
-    margin-left: 3em;
+    margin-left: 5em;
     padding-top: 1em;
 }
 mat-horizontal-stepper{
@@ -58,6 +58,7 @@ form{
     display: grid;
     grid-template-columns: repeat(3,33%);
     grid-gap: 20px;
+    margin-left: 5em;
 }
 
 form div div{
@@ -105,7 +106,12 @@ h5{
 }
 
 input{
-    font-size: 12px;
+    font-size: 18px;
+    
+}
+
+.form-check-label{
+    margin-top: 2% !important;
 }
 
 .getFile{
@@ -132,11 +138,11 @@ button {
 
 mat-form-field{
     width: 75%;
-    padding-bottom: 12px !important;
+    padding-bottom: 8px !important;
 }
 
 mat-select, input{
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
 ::ng-deep .mat-form-field-wrapper{

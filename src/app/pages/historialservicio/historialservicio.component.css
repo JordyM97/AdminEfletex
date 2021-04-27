@@ -1,18 +1,24 @@
 thead, tbody { display: block; }
 
 tbody {
-    height: 400px;       /* Just for the demo          */
+    height: 262px;       /* Just for the demo          */
     overflow-y: auto;    /* Trigger vertical scroll    */
-    overflow-x: hidden;  /* Hide the horizontal scroll */
+    overflow-x: auto;  /* Hide the horizontal scroll */
 }
 
 table {
     width: 100%; /* Optional */
 }
 
-thead th {
-    width: 20%;  /* Optional */
-    margin-top: 2%;
+.tabla-servicios thead tr th{
+   width: 192px !important;
+   margin-top: 2%;
+}
+
+.tabla-servicios tbody tr td{
+   padding-top: 2.2% !important;
+   padding-bottom: 2.2% !important;
+   width: 12% !important;
 }
 
 .tabla-servicios{

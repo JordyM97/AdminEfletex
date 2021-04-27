@@ -1,19 +1,20 @@
 <app-menu></app-menu>
 <div  class="page-content">
     <div class = "mapa">
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom"> 
-            <agm-marker 
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [styles]="mapStyle"> 
+
+            <agm-marker *ngFor="let marcador of marcadores; let i=index" 
+            [latitude]="marcador.location.lat" 
+            [longitude]="marcador.location.lng"
             [iconUrl] ="
-                {
-                    url:'./assets/iconos/camioneta.png',
-                    scaledSize: {
-                        width: 40,
-                        height: 60
-                    }
-                }"
-            [latitude]="latVehicle" 
-            [longitude]="lngVehicle">
-            </agm-marker> 
+            {
+                url:'./assets/iconos/camioneta.png',
+                scaledSize: {
+                    width: 40,
+                    height: 60
+                }
+            }">
+            </agm-marker>
         </agm-map>
     </div>
 </div>

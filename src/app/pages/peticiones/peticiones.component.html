@@ -1,12 +1,31 @@
 <app-menu></app-menu>
 <div class="page-content">
-    <div class="container">
-        <mat-card class="example-card" (click)="detallePeticion()"> 
-            <mat-card-header> 
-                <mat-card-title>Petición de usuario ejemplo</mat-card-title> 
-                <mat-card-subtitle>Enviada el 12/03/2021</mat-card-subtitle> 
-            </mat-card-header> 
-            <!--<mat-card-content><p>Asunto: Buen servicio</p></mat-card-content>-->
-        </mat-card> 
-    </div>
+	<h1>Peticiones</h1>
+	<div class="container">
+		<div class="selectFilter">
+			<div class="float-box">
+				<span class="text-select">Seleccione como desea ver las peticiones</span>
+			</div>
+			<div class="float-box">
+				<select [(ngModel)]="opcionElegida" class="form-control" (change)="filtroSolicitudesPreRegistro(opcionElegida)">
+					<option *ngFor="let opciones of filtrosBusqueda" [ngValue]="opciones">{{ opciones.descripcion }}</option>
+				</select>
+			</div>
+		</div>
+		<mat-card class="peticion-card" *ngFor="let solicitudPreRegistro of listaSolicitudesPreRegistro" style="margin-top:10px;">
+			<mat-card-header>
+					<mat-card-title>Petición de {{solicitudPreRegistro.nombres}} {{solicitudPreRegistro.apellidos}}</mat-card-title>
+			</mat-card-header>
+			<!--<mat-card-content>
+				<p>
+				Pulse aquí para ver los detalles de la petición
+				</p>
+			</mat-card-content>-->
+			<mat-card-actions>
+				<button mat-button>
+					<mat-icon (click)="detallePeticion(solicitudPreRegistro)">Ver detalles</mat-icon>
+				</button>
+			</mat-card-actions>
+		</mat-card>
+	</div>
 </div>

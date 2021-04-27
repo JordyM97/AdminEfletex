@@ -10,48 +10,52 @@
 
   
   <h1 id="title">¡Únete a nuestro equipo!</h1>
-
-  <mat-horizontal-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup" >
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Información del proveedor</ng-template>
         <div class="izquierda">
           <div class="container">
             <h5>Nombres</h5>
             <mat-form-field appearance="legacy">
-            <input matInput type="text" formControlName="nameDriver" required>
+            <input matInput type="text" formControlName="nombresConductor" required>
             </mat-form-field>
           </div>
           <div class="container">
             <h5>Apellidos</h5>
             <mat-form-field appearance="legacy">
-            <input matInput type="text" id="cedula" formControlName="lnameDriver" required> 
+            <input matInput type="text" id="cedula" formControlName="apellidosConductor" required> 
             </mat-form-field>
           </div>
         <div class="container">
           <h5>Email</h5>
             <mat-form-field appearance="legacy">
-              <input matInput type="text" formControlName="emailDriver" required> 
+              <input matInput type="text" formControlName="emailConductor" required> 
             </mat-form-field>
           </div>
           <div class="container">
             <h5>Cédula de identidad</h5>
             <mat-form-field appearance="legacy">
-              <input matInput type="text" formControlName="ciDriver" required> 
+              <input matInput type="text" formControlName="cedulaConductor" required> 
             </mat-form-field>
           </div>
           <div class="container">
-            <h5>Teléfono</h5>
+            <h5>Número celular</h5>
             <mat-form-field appearance="legacy">
-              <input matInput type="text" formControlName="phoneDriver" required/>
+              <input matInput type="text" formControlName="celularConductor" required/>
             </mat-form-field>
+          </div>
+          <div class="form-group form-check">
+            <input 
+              type="checkbox" 
+              formControlName="acceptTerms" 
+              id="acceptTerms" 
+              class="form-check-input" 
+              [ngClass]="{ 'is-invalid': submitted && form.acceptTerms.errors }" />
+            <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+            <div *ngIf="submitted && form.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
           </div>
         </div>
       </form>
-    </mat-step>
-  </mat-horizontal-stepper>
-  <div class="row">
-        <button class="btn-enviar" (click)="modalEnvioExitoso()">Enviar</button>
+      <div class="row">
+        <button class="btn-enviar" (click)="preRegistroConductor()">Enviar</button>
     </div>
 </div>
 

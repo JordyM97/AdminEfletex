@@ -11,6 +11,7 @@ export class ProveedorService {
     API_URL='https://axela.pythonanywhere.com/api';
     URL_CONDUCTOR = 'driver';
     URL_USER = 'user';
+    URL_CONDUCTOR_PREREGISTRO = 'driverpendiente'
 
     proveedores: Array<any>;
     proveedor: any;
@@ -42,6 +43,34 @@ export class ProveedorService {
     putProveedor(id,params){
       return this.apiService.ApiCall(
         `${this.URL_USER}/update/admin/${id}/`,
+        "PUT",
+        params
+      );
+    }
+
+    //Método para obtener las solicitudes de pre registro de conductores
+    getPreRegistroProveedor(params){
+      return this.apiService.ApiCall(
+        `${this.URL_CONDUCTOR_PREREGISTRO}/`,
+        "GET",
+        params
+      );
+    }
+
+    //Método para enviar una solicitud de pre registro de un conductor
+    postPreRegistroProveedor(params, data){
+      return this.apiService.ApiCall(
+        `${this.URL_CONDUCTOR_PREREGISTRO}/`,
+        "POST",
+        data,
+        params
+      );
+    }
+
+    //Método para enviar una solicitud de pre registro de un conductor
+    putPreRegistroProveedor(idSolicitud,params){
+      return this.apiService.ApiCall(
+        `${this.URL_CONDUCTOR_PREREGISTRO}/${idSolicitud}/`,
         "PUT",
         params
       );

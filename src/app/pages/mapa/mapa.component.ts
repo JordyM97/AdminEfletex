@@ -25,6 +25,84 @@ export class MapaComponent implements OnInit {
   latVehicle: any;
   lngVehicle: any;
 
+  marcadores = []
+
+  mapStyle = [
+    {
+      "featureType": "administrative.land_parcel",
+      "elementType": "labels",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "administrative.locality",
+      "elementType": "labels.icon",
+      "stylers": [
+        {
+          "visibility": "off"
+        },
+        {
+          "weight": 1.5
+        }
+      ]
+    },
+    {
+      "featureType": "poi",
+      "elementType": "labels.text",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.business",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "road",
+      "elementType": "labels.icon",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.education",
+      "elementType": "labels.icon",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "road.local",
+      "elementType": "labels",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "transit",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    }
+  ]; 
+
   constructor(
     public db: AngularFireDatabase,                       // no se si borrar todavia
     public firestore: AngularFirestore,                           // conector a firestore
@@ -41,6 +119,13 @@ export class MapaComponent implements OnInit {
   ngOnInit(): void {
     this.positionAll= this.firestore.collection('posicion')
     this.PositionA = this.positionAll.valueChanges();
+    this.PositionA.subscribe(values=>{ 
+      values.forEach(value =>{
+        value.location = JSON.parse(value.location)
+        this.marcadores.push(value)
+      })
+      console.log(this.marcadores)
+    })
     console.log(this.PositionA)
     this.watchDriverPos(6);
   }

@@ -67,6 +67,7 @@ import { AgmCoreModule } from '@agm/core';
 import { NotificacionEnviadaComponent } from './pages/notificacion-enviada/notificacion-enviada.component';
 import { FirstFormComponent } from './pages/first-form/first-form.component';
 import { ModalEnvioExitosoComponent } from './pages/modal-envio-exitoso/modal-envio-exitoso.component';
+import { ModalDetallesPreregistroComponent } from './pages/modal-detalles-preregistro/modal-detalles-preregistro.component';
 
 
 @NgModule({
@@ -107,6 +108,7 @@ import { ModalEnvioExitosoComponent } from './pages/modal-envio-exitoso/modal-en
     NotificacionEnviadaComponent,
     FirstFormComponent,
     ModalEnvioExitosoComponent,
+    ModalDetallesPreregistroComponent,
   ],
   imports: [
     BrowserModule,

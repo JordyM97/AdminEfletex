@@ -120,6 +120,7 @@ export class MapaComponent implements OnInit {
     this.positionAll= this.firestore.collection('posicion')
     this.PositionA = this.positionAll.valueChanges();
     this.PositionA.subscribe(values=>{ 
+      this.marcadores = []
       values.forEach(value =>{
         value.location = JSON.parse(value.location)
         this.marcadores.push(value)
@@ -127,7 +128,6 @@ export class MapaComponent implements OnInit {
       console.log(this.marcadores)
     })
     console.log(this.PositionA)
-    this.watchDriverPos(6);
   }
 
   watchDriverPos(id: any){

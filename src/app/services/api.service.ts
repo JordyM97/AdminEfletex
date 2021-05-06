@@ -30,4 +30,18 @@ export class ApiService {
           return this.http.delete(this.URL_API + endpoint, { headers: headers, params: data });
       }
     }
+
+    public ApiCallMultiPart(endpoint, method, data, data2=null) {
+      const headers = new HttpHeaders({"Accept": "application/json", "Authorization": 'token '+String(localStorage.getItem("token"))});
+      switch (method) {
+          case "GET":
+              return this.http.get(this.URL_API + endpoint, { headers: headers , params: data })
+          case "POST":
+              return this.http.post(this.URL_API + endpoint, data, { headers: headers });
+          case "PUT":
+              return this.http.put(this.URL_API + endpoint, data, { headers: headers , params : data2  });
+          case "DELETE":
+          return this.http.delete(this.URL_API + endpoint, { headers: headers, params: data });
+      }
+  }
 }

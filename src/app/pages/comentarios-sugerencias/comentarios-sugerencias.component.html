@@ -3,35 +3,67 @@
     <h1>Comentarios y sugerencias</h1>
     <mat-tab-group dynamicHeight class="history">
       <mat-tab label="Comentarios"> 
-        <h5>Comentarios</h5>
-        <mat-card>
-          <mat-card-content>
-            <div class="container">
-            <mat-card class="example-card" (click)="detalleComentario()"> 
-              <mat-card-header> 
-                  <mat-card-title>cliente@gmail.com</mat-card-title> 
-                  <mat-card-subtitle>Publicado: 12/03/2021</mat-card-subtitle> 
-                  <mat-card-subtitle>Asunto: Buen servicio</mat-card-subtitle> 
-              </mat-card-header> 
-              <!--<mat-card-content><p>Asunto: Buen servicio</p></mat-card-content>-->
-            </mat-card> 
+        <div class="container">
+          <div class="selectFilter">
+            <div class="float-box">
+              <span class="text-select">Seleccione como desea ver los comentarios</span>
             </div>
-          </mat-card-content>
-        </mat-card>
+            <div class="float-box">
+              <select [(ngModel)]="opcionElegidaComentario" class="form-control" (change)="filtroComentarios(opcionElegidaComentario)">
+                <option *ngFor="let opciones of filtrosComentarios" [ngValue]="opciones">{{ opciones.descripcion }}</option>
+              </select>
+            </div>
+          </div>
+          <mat-card class="peticion-card" *ngFor="let comentario of listaComentarios" style="margin-top:10px;">
+            <mat-card-header>
+                <mat-card-title> {{comentario.email}} </mat-card-title>
+                <mat-card-subtitle> Asunto: {{comentario.asunto}}</mat-card-subtitle>
+                <mat-card-subtitle> Publicado: {{comentario.fecha | date :'dd/MM/yyyy hh:mm:ss'}}</mat-card-subtitle>
+            </mat-card-header>
+            <!--<mat-card-content>
+              <p>
+              Pulse aquí para ver los detalles de la petición
+              </p>
+            </mat-card-content>-->
+            <mat-card-actions class="ml-3">
+              <button mat-button>
+                <mat-icon (click)="detalleComentario(comentario)">Ver detalles</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
       </mat-tab>
   
       <mat-tab label="Sugerencias"> 
-        <h5>Sugerencias</h5>
-        <mat-card>
-          <mat-card-content>
-            <div class="container">
-              <table class="table">
-                <tr>
-                </tr>
-            </table>
+        <div class="container">
+          <div class="selectFilter">
+            <div class="float-box">
+              <span class="text-select">Seleccione como desea ver las sugerencias</span>
             </div>
-          </mat-card-content>
-        </mat-card>
+            <div class="float-box">
+              <select [(ngModel)]="opcionElegidaSugerencia" class="form-control" (change)="filtroSugerencia(opcionElegidaSugerencia)">
+                <option *ngFor="let opciones of filtroSugerencias" [ngValue]="opciones">{{ opciones.descripcion }}</option>
+              </select>
+            </div>
+          </div>
+          <mat-card class="peticion-card" *ngFor="let sugerencia of listaSugerencias" style="margin-top:10px;">
+            <mat-card-header>
+                <mat-card-title>{{sugerencia.email}}</mat-card-title>
+                <mat-card-subtitle> Asunto: {{sugerencia.asunto}}</mat-card-subtitle>
+                <mat-card-subtitle> Publicado: {{sugerencia.fecha | date :'dd/MM/yyyy hh:mm:ss'}}</mat-card-subtitle>
+            </mat-card-header>
+            <!--<mat-card-content>
+              <p>
+              Pulse aquí para ver los detalles de la petición
+              </p>
+            </mat-card-content>-->
+            <mat-card-actions class="ml-3">
+              <button mat-button>
+                <mat-icon (click)="detalleSugerencia(sugerencia)">Ver detalles</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
       </mat-tab>
     </mat-tab-group>
 </div>

@@ -30,12 +30,14 @@ export class ModalDetallesPreregistroComponent implements OnInit {
 
   preRegistroRevisado(){
     let params: any = {}
+    params.nombres = this.data.data.nombres;
+    params.apellidos = this.data.data.apellidos;
+    params.email = this.data.data.email;
     params.estado = true;
     let idPreRegistro = this.data.data.id;
-    this.dialogRef.close(this.data.estadoFiltro);
     this.proveedorService.putPreRegistroProveedor(idPreRegistro,params).subscribe((data: any) =>{
       console.log(data)
-      this.dialogRef.close(this.data);
+      this.dialogRef.close(this.data.estadoFiltro);
     })
   }
 }

@@ -10,7 +10,9 @@ export class EmpresaService {
   API_URI_SV = 'http://ctvehicular.pythonanywhere.com/api/history/service';
   API_URL='https://axela.pythonanywhere.com/api';
 
-  URL_TIPO_SERVICIO = 'typeservice'
+  URL_TIPO_SERVICIO = 'typeservice';
+  URL_NOTIFICACION = 'notification';
+  URL_SUGGESTION = 'suggestion';
   servicios: Array<any>;
   tipoServicio: Array<any>;
   tarifaServicio: Array<any>;
@@ -28,6 +30,32 @@ export class EmpresaService {
       params
     );
   }
+
+  postNotificaciones(data){
+    return this.apiService.ApiCallMultiPart(
+      `${this.URL_NOTIFICACION}/`,
+      "POST",
+      data
+    );
+  }
+
+  getComentariosSugerencias(params){
+    return this.apiService.ApiCall(
+      `${this.URL_SUGGESTION}/`,
+      "GET",
+      params
+    );
+  }
+
+  putComentariosSugerencias(idSolicitud,params){
+    return this.apiService.ApiCall(
+      `${this.URL_SUGGESTION}/${idSolicitud}/`,
+      "PUT",
+      params
+    );
+  }
+
+
 
   //Método para actualizar todos los tipos de servicios
   putTipoServicios(informacionModificar, id){

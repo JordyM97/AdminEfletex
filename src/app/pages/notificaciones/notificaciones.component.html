@@ -7,9 +7,10 @@
                 <tr>
                     <td><h2>Destinatario </h2></td>
                     <td><mat-form-field>
-                        <mat-select  formControlName="destinatarioNotificacion" required>
-                            <mat-option value="clientes">Clientes</mat-option>
-                            <mat-option value="proveedores">Proveedores</mat-option>
+                        <mat-select formControlName="user" (selectionChange)="opcionElegidaFin($event.value)"  required>
+                            <mat-option *ngFor="let opcion of filtroOpciones" [value]="opcion">
+                            {{ opcion.descripcion }}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field></td>              
                 </tr>
@@ -18,7 +19,7 @@
                     <td><mat-form-field>
                         <input matInput 
                         type="text"
-                        formControlName="tituloNotificacion" 
+                        formControlName="title" 
                         required> 
                     </mat-form-field></td>
                 </tr>
@@ -29,7 +30,7 @@
                         rows="5" 
                         cols="40"
                         type="text" 
-                        formControlName="descripcionNotificacion" 
+                        formControlName="body" 
                         required cdkTextareaAutosize 
                         #autosize="cdkTextareaAutosize">
                         </textarea>

@@ -68,7 +68,7 @@ export class PeticionesComponent implements OnInit {
 
   solicitudesPreRegistro(){
     let params: any = {}
-
+    params.estado = false;
     this.proveedorService.getPreRegistroProveedor(params).subscribe((data: any) =>{
       console.log(data)
       this.listaSolicitudesPreRegistro = data
@@ -78,12 +78,13 @@ export class PeticionesComponent implements OnInit {
 
   detallePeticion(data){
     const dialogConfig=new MatDialogConfig();
-    dialogConfig.disableClose=false;
+    dialogConfig.disableClose=true;
     dialogConfig.autoFocus=true;
     dialogConfig.height='100%';
     dialogConfig.width='100%';
     const dialogRef =  this.dialog.open(ModalDetallesPreregistroComponent,
       {
+        disableClose: true,
         width:'50%',
         data: {
           data: data,

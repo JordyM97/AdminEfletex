@@ -1,3 +1,32 @@
 .example-card{
     cursor: pointer ;
 }
+div h1 {
+    font-weight: bold;
+    color:#E5242F;
+    letter-spacing: 1px;
+}
+
+.peticion-card{
+    margin-bottom: 4%;
+}
+
+
+.selectFilter{
+    display: inline-block;
+}
+
+.float-box{
+    float: left;
+    margin: 1em;
+    width: 282px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-select{
+    font-weight: bold;
+    color:#1D127A;
+}
